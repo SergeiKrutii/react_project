@@ -1,4 +1,12 @@
 import { apiSlice } from "app/api/apiSlice";
+import {
+  setRegisterData,
+  setLoginData,
+  setLogout,
+  setRefresh,
+} from "./authSlice";
+import { selectSid } from "./authSelectors";
+import { useSelector } from "react-redux";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,15 +17,11 @@ export const authApiSlice = apiSlice.injectEndpoints({
         body: { ...credentials },
       }),
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
-        // `onStart` side-effect
-        // dispatch(messageCreated('Fetching post...'))
         try {
           const { data } = await queryFulfilled;
-          // `onSuccess` side-effect
-          //   dispatch(messageCreated('Post received!'))
+          dispatch(setRegisterData(data.email));
         } catch (err) {
-          // `onError` side-effect
-          //   dispatch(messageCreated('Error fetching post!'))
+          console.log(err);
         }
       },
     }),
@@ -27,27 +31,57 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...credentials },
       }),
+      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setLoginData(data));
+        } catch (err) {
+          console.log(err);
+        }
+      },
     }),
     logout: builder.mutation({
       query: () => ({
         url: "/auth/logout",
         method: "POST",
       }),
+      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          dispatch(setLogout());
+        } catch (err) {
+          console.log(err);
+        }
+      },
     }),
     refresh: builder.mutation({
-      query: (sessionId) => ({
+      query: (sid) => ({
         url: "/auth/refresh",
         method: "POST",
-        body: { ...sessionId },
+        body: { sid },
+        shouldFetch: (getState) => {
+          const sessionId = getState().auth.sessionId;
+          if (sessionId === null) {
+            return;
+          }
+        },
       }),
+      async onQueryStarted(id, { getState, dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setRefresh(data));
+        } catch (err) {
+          console.log(err);
+        }
+      },
     }),
-    googleSignin: builder.mutation({
-      query: (credentials) => ({
-        url: "/auth/refresh",
-        method: "GET",
-        body: { ...credentials },
-      }),
-    }),
+    // googleSignin: builder.mutation({
+    //   query: (credentials) => ({
+    //     url: "/auth/refresh",
+    //     method: "GET",
+    //     body: { ...credentials },
+    //   }),
+    // }),
   }),
 });
 
@@ -56,5 +90,5 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useRefreshMutation,
-  useGoogleSigninMutation,
+  // useGoogleSigninMutation,
 } = authApiSlice;
