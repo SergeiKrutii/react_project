@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  email: null,
+  isTokenRefreshed: true,
   userData: null,
   isLoggedIn: false,
   sessionId: null,
@@ -19,6 +19,7 @@ const authSlice = createSlice({
     },
     setLoginData: (state, { payload }) => {
       state.token = payload.accessToken;
+      state.isTokenRefreshed = false;
       state.refreshToken = payload.refreshToken;
       state.sessionId = payload.sid;
       state.userData = { ...payload.userData };
@@ -27,10 +28,10 @@ const authSlice = createSlice({
       return initialState;
     },
     setRefresh: (state, { payload }) => {
-      console.log("🚀 ~ payload:", payload);
-      // state.token = payload.newAccessToken;
-      // state.refreshToken = payload.newRefreshToken;
-      // state.sessionId = payload.newSid;
+      state.isTokenRefreshed = false;
+      state.token = payload.newAccessToken;
+      state.refreshToken = payload.newRefreshToken;
+      state.sessionId = payload.newSid;
     },
   },
 });

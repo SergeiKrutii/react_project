@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
 import {
   useSigninMutation,
   useLoginMutation,
   useLogoutMutation,
   useRefreshMutation,
 } from "redux/auth/authApiSlice";
-import {
-  selectSid,
-  selectRefresh,
-  selectEmail,
-} from "redux/auth/authSelectors";
+import { selectSid } from "redux/auth/authSelectors";
 
 const App = (props) => {
   const [email, setEmail] = useState("");
@@ -19,20 +14,17 @@ const App = (props) => {
   const [emailError, setEmailError] = useState(false);
   const [messageRequired, setMessageRequired] = useState(false);
   const sid = useSelector(selectSid);
-  const refreshToken = useSelector(selectRefresh);
-
-  // const userEmail = useSelector(selectEmail);
 
   const [signin] = useSigninMutation();
   const [login] = useLoginMutation();
   const [logout] = useLogoutMutation();
   const [refresh] = useRefreshMutation();
 
-  // useEffect(() => {
-
-  //     refresh();
-  //
-  // }, [refresh]);
+  useEffect(() => {
+    if (!!sid) {
+      refresh(sid);
+    }
+  }, [refresh]);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {

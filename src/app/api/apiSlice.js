@@ -6,8 +6,16 @@ const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
     const refreshToken = getState().auth.refreshToken;
-    if (token) {
-      headers.set("Authorization", `Bearer ${token}`);
+    const isRefreshid = getState().auth.isTokenRefreshed;
+
+    if (isRefreshid) {
+      if (refreshToken) {
+        headers.set("Authorization", `Bearer ${refreshToken}`);
+      }
+    } else {
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
     }
 
     return headers;

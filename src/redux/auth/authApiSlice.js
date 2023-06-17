@@ -5,8 +5,6 @@ import {
   setLogout,
   setRefresh,
 } from "./authSlice";
-import { selectSid } from "./authSelectors";
-import { useSelector } from "react-redux";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -59,12 +57,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: "/auth/refresh",
         method: "POST",
         body: { sid },
-        shouldFetch: (getState) => {
-          const sessionId = getState().auth.sessionId;
-          if (sessionId === null) {
-            return;
-          }
-        },
       }),
       async onQueryStarted(id, { getState, dispatch, queryFulfilled }) {
         try {
@@ -75,13 +67,13 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
-    // googleSignin: builder.mutation({
-    //   query: (credentials) => ({
-    //     url: "/auth/refresh",
-    //     method: "GET",
-    //     body: { ...credentials },
-    //   }),
-    // }),
+    googleSignin: builder.mutation({
+      query: (credentials) => ({
+        url: "/auth/refresh",
+        method: "GET",
+        body: { ...credentials },
+      }),
+    }),
   }),
 });
 
