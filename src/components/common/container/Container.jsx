@@ -4,7 +4,7 @@ import { StyledContainer } from "./StyledContainer";
 
 const Container = ({ children }) => {
   return (
-    <StyledContainer bgc="#00ff00">
+    <StyledContainer>
       <header>
         <img src={logoMob} alt="logo" />
       </header>

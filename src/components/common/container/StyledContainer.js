@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled.div(({ bgc }) => ({
-  color: "#fff",
+export const StyledContainer = styled.div(() => ({
+  fontFamily: "Roboto",
+  color: "var(--primary-color)",
 
   "@media(min-width: 320px)": {
     width: 300,

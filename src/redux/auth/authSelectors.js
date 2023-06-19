@@ -1,10 +1,13 @@
-export const selectEmail = (state) => state.auth.userData.email;
-export const selectSid = (state) => state.auth.sessionId;
-export const selectRefresh = (state) => state.auth.refreshToken;
-export const selectIsTokenRefreshed = (state) => state.auth.isTokenRefreshed;
+const selectEmail = (state) => state.auth.userData?.email;
+const selectSid = (state) => state.auth.sessionId;
+const selectRefresh = (state) => state.auth.refreshToken;
+const selectIsTokenRefreshed = (state) => state.auth.isTokenRefreshed;
 
-// const authSelectors = {
-//   selectEmail,
-// };
+const authSelectors = {
+  selectEmail,
+  selectSid,
+  selectRefresh,
+  selectIsTokenRefreshed,
+};
 
-// export default authSelectors;
+export default authSelectors;
