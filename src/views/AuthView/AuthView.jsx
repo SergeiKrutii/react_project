@@ -4,28 +4,17 @@ import {
   useSigninMutation,
   useLoginMutation,
   useLogoutMutation,
-  useRefreshMutation,
 } from "redux/auth/authApiSlice";
-import authSelectors from "redux/auth/authSelectors";
 
 const AuthView = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [messageRequired, setMessageRequired] = useState(false);
-  const sid = useSelector(authSelectors.selectSid);
 
   const [signin] = useSigninMutation();
   const [login] = useLoginMutation();
   const [logout] = useLogoutMutation();
-  const [refresh] = useRefreshMutation();
-
-  useEffect(() => {
-    if (!!sid) {
-      refresh(sid);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refresh]);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
