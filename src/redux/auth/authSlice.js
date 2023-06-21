@@ -23,6 +23,7 @@ const authSlice = createSlice({
       state.refreshToken = payload.refreshToken;
       state.sessionId = payload.sid;
       state.userData = { ...payload.userData };
+      state.isLoggedIn = true;
     },
     setLogout: (state, { payload }) => {
       return initialState;
