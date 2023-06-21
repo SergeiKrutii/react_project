@@ -4,6 +4,7 @@ import {
   setLoginData,
   setLogout,
   setRefresh,
+  setUser,
 } from "./authSlice";
 
 export const authApiSlice = apiSlice.injectEndpoints({
@@ -74,6 +75,20 @@ export const authApiSlice = apiSlice.injectEndpoints({
         body: { ...credentials },
       }),
     }),
+    getUser: builder.mutation({
+      query: () => ({
+        url: "/user",
+        method: "GET",
+      }),
+      async onQueryStarted(id, { getState, dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setUser(data));
+        } catch (err) {
+          console.log(err);
+        }
+      },
+    }),
   }),
 });
 
@@ -83,4 +98,5 @@ export const {
   useLogoutMutation,
   useRefreshMutation,
   // useGoogleSigninMutation,
+  useGetUserMutation,
 } = authApiSlice;
