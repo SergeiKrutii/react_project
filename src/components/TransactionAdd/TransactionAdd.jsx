@@ -11,10 +11,23 @@ import {
 import Container from "components/common/container/Container";
 import SpriteIcon from "components/common/spriteIcon/SpriteIcon";
 import Button from "components/common/button/Button";
+import { usePeriodDataQuery } from "redux/transactions/transactionsApiSlice";
 
 const TransactionAdd = ({ description, category }) => {
   const [categoryes, setCategoryes] = useState("");
   const [balance, setBalance] = useState("");
+  //////////////////////////////////////////////////////////////////
+  //ПРИМЕР ОБЪЕКТА ДЛЯ ДОБАВЛЕНИЯ ДЕНЕГ И РАСХОДА (ОДИНАКОВО)
+  // const cred = {
+  //   description: "Аванс",
+  //   amount: 1001,
+  //   date: "2023-07-01",
+  //   category: "З/П",
+  // };
+
+  // const [addIncome, { data }] = useAddIncomeMutation();
+  // console.log("🚀 ~ data:", data);
+  //////////////////////////////////////////////////////////////////
 
   const handleChange = (event) => {
     setCategoryes(event.target.value);

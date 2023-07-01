@@ -13,7 +13,7 @@ const StyledReportLink = styled(NavLink)(({ props }) => ({
 }));
 
 const StyledSpan = styled.span((props) => ({
-  marginTop: "30px",
+  marginTop: "40px",
   marginBottom: "40px",
 }));
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { StyledCalendar, StyledDate } from "./StyledCalendar";
+import { usePeriodDataQuery } from "redux/transactions/transactionsApiSlice";
 
 const CalendarComponent = () => {
   const [onShow, setOnShow] = useState(false);

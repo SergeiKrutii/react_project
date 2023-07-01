@@ -5,5 +5,4 @@ export const StyledHomeView = styled.div((prop) => ({
   flexWrap: "wrap",
   justifyContent: "center",
   alignItems: "center",
-  padding: "0px 19px",
 }));

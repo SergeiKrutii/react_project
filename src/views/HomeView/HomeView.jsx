@@ -11,15 +11,15 @@ import FinanceOperationList from "components/common/FinanceOperationList/Finance
 
 const HomeView = (props) => {
   return (
-    <div style={{ position: "relative", height: "567px" }}>
+    <div style={{ position: "relative" }}>
       <StyledHomeView>
         <ReportLink />
         <BalanceComponent />
         {/* <PopUp /> */}
         <CalendarComponent />
       </StyledHomeView>
-      <HomePageNav />
       <FinanceOperationList />
+      <HomePageNav />
     </div>
   );
 };

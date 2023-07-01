@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import storage from "redux-persist/lib/storage";
 import authReducer from "redux/auth/authSlice";
+import transactionReducer from "redux/transactions/transactionsSlice";
 import {
   persistStore,
   persistReducer,
@@ -24,6 +25,7 @@ export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
+    transactions: transactionReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -8,6 +8,7 @@ const StyledCalendar = styled.div(() => ({
   width: "104px",
   height: "40px",
   marginTop: "40px",
+  marginBottom: "42px",
 }));
 
 const StyledDate = styled.span(() => ({

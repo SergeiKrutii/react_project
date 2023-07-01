@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
-const StyledFinanceOperationList = styled.ul(() => ({}));
+const StyledFinanceOperationList = styled.ul(() => ({
+  overflowY: "scroll",
+  marginTop: "20px",
+}));
 const StyledFinanceItem = styled.li(() => ({
   display: "flex",
   justifyContent: "space-between",
 
-  marginBottom: "22px",
+  marginBottom: "20px",
 }));
 const StyledFinanceTitle = styled.h2(() => ({
   // height: "20px",
