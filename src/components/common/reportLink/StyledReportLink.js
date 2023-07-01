@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const StyledReportLink = styled(NavLink)(({ props }) => ({
+const StyledReportLink = styled(NavLink)(({ props }) => ({
   textDecoration: "none",
   color: "var(--transparent-color)",
   fontStyle: "normal",
@@ -11,3 +11,10 @@ export const StyledReportLink = styled(NavLink)(({ props }) => ({
   textAlign: "right",
   letterSpacing: "0.04em",
 }));
+
+const StyledSpan = styled.span((props) => ({
+  marginTop: "30px",
+  marginBottom: "40px",
+}));
+
+export { StyledReportLink, StyledSpan };
