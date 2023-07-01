@@ -11,6 +11,7 @@ import Layout from "Layout";
 import PopUp from "components/common/popUp/PopUp";
 import authSelectors from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
+import Header from "components/common/header/Header";
 
 const App = () => {
   // const [refresh] = useRefreshMutation();
@@ -33,8 +34,8 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
+      <Header />
       <Container>
-        <PopUp />
         <Routes>
           <Route path="/" element={<Layout />}>
             {/* next code PrivateRoute */}

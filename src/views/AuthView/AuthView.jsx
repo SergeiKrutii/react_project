@@ -5,6 +5,17 @@ import {
   useLoginMutation,
   useLogoutMutation,
 } from "redux/auth/authApiSlice";
+import {
+  StyledAuthInput,
+  StyledAuthForm,
+  StyledLogo,
+  StyledAuth,
+  StyledTextGoogle,
+  StyledGoogleBtn,
+  StyledTextInfo,
+  StyledTextEmail,
+} from "./StyledAuthView";
+import LogoMobile from "../../../src/components/images/mainLogoMob.svg";
 
 const AuthView = (props) => {
   const [email, setEmail] = useState("");
@@ -51,39 +62,50 @@ const AuthView = (props) => {
   };
 
   return (
-    <div>
-      <h1>Auth-Form</h1>
-      <input
-        required
-        type="email"
-        name="email"
-        value={email}
-        onChange={handleChange}
-        onBlur={validateEmail}
-      />
-      {emailError && <p>Неправильный формат email</p>}
-      {messageRequired && <p>это обязательное поле</p>}
-      <input
-        required
-        type="password"
-        name="password"
-        value={password}
-        onChange={handleChange}
-      />
-      {messageRequired && <p>это обязательное поле</p>}
-      <button type="button" onClick={handleLogin}>
-        Login
-      </button>
-      <button type="button" onClick={handleRegistration}>
-        Registration
-      </button>
-      <button type="button" onClick={logout}>
-        LogOut
-      </button>
-    </div>
+    <>
+      <StyledLogo src={LogoMobile} alt="Logo" />
+      <StyledAuth>
+        <StyledAuthForm>
+          <StyledTextGoogle>
+            Вы можете авторизоваться с помощью Google Account:
+          </StyledTextGoogle>
+          <StyledGoogleBtn>Google</StyledGoogleBtn>
+          <StyledTextInfo>
+            Или зайти с помощью e-mail и пароля, предварительно
+            зарегистрировавшись:
+          </StyledTextInfo>
+          <StyledTextEmail>Электронная почта:</StyledTextEmail>
+          <StyledAuthInput
+            required
+            type="email"
+            name="email"
+            value={email}
+            placeholder="your@email.com"
+            onChange={handleChange}
+            onBlur={validateEmail}
+          />
+          {emailError && <p>Неправильный формат email</p>}
+          {messageRequired && <p>это обязательное поле</p>}
+          <StyledTextEmail>Пароль:</StyledTextEmail>
+          <StyledAuthInput
+            required
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Пароль"
+            onChange={handleChange}
+          />
+          {messageRequired && <p>это обязательное поле</p>}
+          <button type="button" onClick={handleLogin}>
+            Login
+          </button>
+          <button type="button" onClick={handleRegistration}>
+            Registration
+          </button>
+        </StyledAuthForm>
+      </StyledAuth>
+    </>
   );
 };
-
-AuthView.propTypes = {};
 
 export default AuthView;

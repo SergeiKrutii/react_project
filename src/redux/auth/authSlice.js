@@ -35,11 +35,13 @@ const authSlice = createSlice({
       state.token = payload.newAccessToken;
       state.refreshToken = payload.newRefreshToken;
       state.sessionId = payload.newSid;
+      state.isLoggedIn = true;
     },
     setUser: (state, { payload }) => {
       state.userData.email = payload.email;
       state.userData.balance = payload.balance;
       state.userData.transactions = payload.transactions;
+      state.isLoggedIn = true;
     },
   },
 });
