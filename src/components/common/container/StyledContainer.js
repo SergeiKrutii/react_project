@@ -5,8 +5,8 @@ export const StyledContainer = styled.div(() => ({
   color: "var(--primary-color)",
 
   "@media(min-width: 320px)": {
-    width: 300,
-    paddingLeft: 10,
-    paddingRight: 10,
+    width: 282,
+    paddingLeft: 19,
+    paddingRight: 19,
   },
 }));
