@@ -9,12 +9,13 @@ import Container from "components/common/container/Container";
 import { PrivateRoute } from "components/routes/PrivateRoute";
 import Layout from "Layout";
 import HomeView from "views/HomeView/HomeView";
-
 import PopUp from "components/common/popUp/PopUp";
 import authSelectors from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
+import Header from "components/common/header/Header";
 import AddExpenceView from "views/AddExpenceView/AddExpenceView";
 import AddIncomeView from "views/AddIncomeView/AddIncomeView";
+
 
 const App = () => {
   // const [refresh] = useRefreshMutation();
@@ -37,7 +38,8 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      {/* <Container> */}
+      <Header />
+      <Container>
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* next code PrivateRoute */}
@@ -46,7 +48,7 @@ const App = () => {
         <Route path="add-expence" element={<AddExpenceView />} />
         <Route path="add-income" element={<AddIncomeView />} />
       </Routes>
-      {/* </Container> */}
+     </Container>
     </>
   );
 };

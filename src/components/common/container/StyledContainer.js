@@ -3,10 +3,22 @@ import styled from "styled-components";
 export const StyledContainer = styled.div(() => ({
   fontFamily: "Roboto",
   color: "var(--primary-color)",
+  minHeight: 567,
+  margin: "0 auto",
+  maxWidth: 320,
+  paddingLeft: 10,
+  paddingRight: 10,
 
-  "@media(min-width: 320px)": {
-    width: 282,
-    paddingLeft: 19,
-    paddingRight: 19,
+
+  "@media screen  and (min-width: 768px)": {
+    maxWidth: 768,
+    paddingLeft: 51,
+    paddingRight: 52,
+  },
+  
+  "@media screen  and (min-width: 1280px)": {
+    maxWidth: 1280,
+    paddingLeft: 110,
+    paddingRight: 110,
   },
 }));
