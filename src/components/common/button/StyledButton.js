@@ -1,18 +1,21 @@
 import styled from "styled-components";
 
-export const SyledButton = styled.button(
-  ({ bgColor, textColor, btnRadius }) => ({
-    width: "125px",
-    height: "44px",
+export const SyledButton = styled.button((props) => ({
+  width: "125px",
+  padding: "12px 34px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 
-    borderRadius: btnRadius ? "16px" : "0px 22px 22px 0px;",
-    backgroundColor:
-      bgColor === "orange"
-        ? "var(--main-bg-button-color: #ff751d)"
-        : "var(--main-bg-color: #f5f6fb)",
-    color:
-      textColor === "main"
-        ? "var(--secondary-color: #52555f)"
-        : "var(--hover-button-color: #ffffff)",
-  })
-);
+  border: "2px solid #FFF ",
+
+  borderRadius: "16px",
+  backgroundColor: "var(--main-bg-color)",
+  color: "var(--secondary-color)",
+
+  fontSize: "12px",
+  letterSpacing: "0.24px",
+  textTransform: "uppercase",
+  fontWeight: 700,
+  lineHeight: "normal",
+}));

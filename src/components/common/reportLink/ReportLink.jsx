@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import { ReactComponent as Chart } from "components/images/chart.svg";
-import { StyledReportLink } from "./StyledReportLink";
+import { StyledReportLink, StyledSpan } from "./StyledReportLink";
 
 const ReportLink = (props) => {
   return (
-    <StyledReportLink to="chart">
-      Перейти к отчетам <Chart style={{ marginLeft: "20px" }} />
-    </StyledReportLink>
+    <StyledSpan>
+      <StyledReportLink to="chart">
+        Перейти к отчетам <Chart style={{ marginLeft: "20px" }} />
+      </StyledReportLink>
+    </StyledSpan>
   );
 };
 
