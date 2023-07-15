@@ -15,11 +15,21 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...data },
       }),
+      invalidatesTags: ["Transactions"],
+      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setIncome(data));
+        } catch (err) {
+          console.log(err);
+        }
+      },
     }),
     getIncome: builder.query({
       query: () => ({
         url: "/transaction/income",
         method: "GET",
+        providesTags: ["Transactions"],
       }),
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
@@ -36,11 +46,22 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...data },
       }),
+      invalidatesTags: ["Transactions"],
+      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          console.log("🚀 ~ data:", data);
+          dispatch(setExpence(data));
+        } catch (err) {
+          console.log(err);
+        }
+      },
     }),
     getExpence: builder.query({
       query: () => ({
         url: "/transaction/expense",
         method: "GET",
+        providesTags: ["Transactions"],
       }),
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
@@ -53,15 +74,16 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
     }),
     deleteTransaction: builder.mutation({
       query: (id) => ({
-        url: "/transaction",
+        url: `/transaction/${id}`,
         method: "DELETE",
-        body: id,
       }),
+      invalidatesTags: ["Transactions"],
     }),
     incomeCategory: builder.query({
       query: () => ({
         url: "/transaction/income-categories",
         method: "GET",
+        providesTags: ["Transactions"],
       }),
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
@@ -76,6 +98,7 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: "/transaction/expense-categories",
         method: "GET",
+        providesTags: ["Transactions"],
       }),
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
@@ -91,6 +114,7 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
         url: "/transaction/period-data",
         method: "GET",
         headers: date,
+        providesTags: ["Transactions"],
       }),
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {

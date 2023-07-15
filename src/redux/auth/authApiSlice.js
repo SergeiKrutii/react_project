@@ -15,6 +15,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...credentials },
       }),
+
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
@@ -30,6 +31,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...credentials },
       }),
+
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
@@ -44,6 +46,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: "/auth/logout",
         method: "POST",
       }),
+
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
@@ -59,6 +62,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { sid },
       }),
+
       async onQueryStarted(id, { getState, dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
@@ -68,18 +72,19 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
-    googleSignin: builder.mutation({
+    googleSignin: builder.query({
       query: (credentials) => ({
         url: "/auth/refresh",
         method: "GET",
         body: { ...credentials },
       }),
     }),
-    getUser: builder.mutation({
+    getUser: builder.query({
       query: () => ({
         url: "/user",
         method: "GET",
       }),
+      providesTags: ["Transactions"],
       async onQueryStarted(id, { getState, dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
@@ -89,6 +94,13 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+    setUserBalance: builder.mutation({
+      query: (newBalance) => ({
+        url: "/user/balance",
+        method: "PATCH",
+        body: newBalance,
+      }),
+    }),
   }),
 });
 
@@ -97,6 +109,7 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useRefreshMutation,
-  // useGoogleSigninMutation,
-  useGetUserMutation,
+  useGoogleSigninQuery,
+  useGetUserQuery,
+  useSetUserBalanceMutation,
 } = authApiSlice;

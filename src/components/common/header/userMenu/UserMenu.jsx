@@ -16,7 +16,10 @@ const UserMenu = () => {
   return (
     <StyledUserMenu>
       <Avatar
-        sx={{ height: 32, width: 32 }}
+        sx={{
+          height: 32,
+          width: 32,
+        }}
         alt={`${email}`}
         src="/static/images/avatar/1.jpg"
       />

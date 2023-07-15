@@ -1,9 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "GlobalStyle";
-import {
-  useRefreshMutation,
-  useGetUserMutation,
-} from "redux/auth/authApiSlice";
+import { useRefreshMutation, useGetUserQuery } from "redux/auth/authApiSlice";
 
 import { useEffect } from "react";
 import Container from "components/common/container/Container";
@@ -16,18 +13,21 @@ import { useSelector } from "react-redux";
 import Header from "components/common/header/Header";
 import AddExpenceView from "views/AddExpenceView/AddExpenceView";
 import AddIncomeView from "views/AddIncomeView/AddIncomeView";
+import { useGetIncomeQuery } from "redux/transactions/transactionsApiSlice";
 
 const App = () => {
   // const [refresh] = useRefreshMutation();
-  const [getUser] = useGetUserMutation();
-  const token = useSelector(authSelectors.selectToken);
-  // const sid = useSelector(authSelectors.selectSid);
+  // const token = useSelector(authSelectors.selectToken);
+  // const { data } = useGetUserQuery(undefined, {
+  //   skip: !token,
+  //   refetchOnMountOrArgChange: true,
+  // });
 
-  useEffect(() => {
-    if (token) {
-      getUser();
-    }
-  }, [getUser, token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     getUser();
+  //   }
+  // }, [getUser, token]);
 
   // useEffect(() => {
   //   if (!!sid) {

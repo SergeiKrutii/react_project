@@ -2,6 +2,17 @@ import styled from "styled-components";
 
 const StyledBalanceComponent = styled.div(({ prop }) => ({
   alignItems: "center",
+  display: "flex",
+  flexWrap: "wrap",
+
+  justifyContent: "center",
+  "@media(max-width: 767px)": {
+    maxWidth: "283px",
+  },
+  "@media(min-width: 768px)": {
+    display: "flex",
+    marginRight: 111,
+  },
 }));
 
 const StyledBalanceInput = styled.input({
@@ -27,6 +38,12 @@ const StyledBalanceInput = styled.input({
   fontWeight: 700,
   letterSpacing: "0.24px",
   textTransform: "uppercase",
+
+  "@media(min-width: 768px)": {
+    borderRadius: "22px",
+    marginRight: "15px",
+    borderRight: "2px solid #FFF",
+  },
 });
 
 const StyledBalanceForm = styled.form(({ prop }) => ({
@@ -45,6 +62,11 @@ const StyledParagraph = styled.p(() => ({
   display: "flex",
   flexWrap: "wrap",
   justifyContent: "center",
+
+  "@media(min-width: 768px)": {
+    marginRight: "21px",
+    marginBottom: 0,
+  },
 }));
 
 const StyledButtonForm = styled.button(() => ({
@@ -63,6 +85,17 @@ const StyledButtonForm = styled.button(() => ({
   fontSize: "12px",
   letterSpacing: "0.24px",
   textTransform: "uppercase",
+
+  transition: "background-color 0.5s ease-in-out, color 0.5s ease-in-out",
+
+  "&:hover, &:focus": {
+    color: "var(--hover-button-color)",
+    backgroundColor: "var(--main-bg-button-color)",
+  },
+
+  "@media(min-width: 768px)": {
+    borderRadius: "22px",
+  },
 }));
 
 export {

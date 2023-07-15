@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  incTransaction: null,
-  expTransaction: null,
+  newIncTransaction: null,
+  newExpTransaction: null,
+
   incCategory: [],
   expCategory: [],
   transactionPeriod: null,
@@ -13,10 +14,10 @@ const transactionSlice = createSlice({
   initialState,
   reducers: {
     setIncome: (state, { payload }) => {
-      state.incTransaction = { ...payload };
+      state.incTransaction = payload;
     },
     setExpence: (state, { payload }) => {
-      state.expTransaction = { ...payload };
+      state.expTransaction = payload;
     },
     setIncCategory: (state, { payload }) => {
       state.incCategory = payload;
