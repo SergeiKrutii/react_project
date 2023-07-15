@@ -1,15 +1,38 @@
 import TransactionAdd from "components/TransactionAdd/TransactionAdd";
-import Button from "components/common/button/Button";
+import { useSelector } from "react-redux";
+import {
+  useExpenceCategoryQuery,
+  useAddExpenceMutation,
+} from "redux/transactions/transactionsApiSlice";
+import { useNavigate } from "react-router-dom";
+import transactionSelectors from "redux/transactions/transactionsSelectors";
 
-function AddExpenceView() {
+const AddExpenceView = () => {
+  const { data, isSuccess } = useExpenceCategoryQuery();
+  const [addExpence] = useAddExpenceMutation();
+  const navigate = useNavigate();
+
+  const handleConfirmExpense = async (expense) => {
+    try {
+      await addExpence(expense);
+      if (isSuccess) {
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <TransactionAdd
-        description={"Описание товара"}
-        category={"Категория товаров"}
+        descriptionTitle={"Описание товара"}
+        categoryTitle={"Категория товаров"}
+        categoryes={data}
+        onAddTransaction={handleConfirmExpense}
       />
     </>
   );
-}
+};
 
 export default AddExpenceView;

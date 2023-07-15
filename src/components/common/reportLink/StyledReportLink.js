@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { ReactComponent as Chart } from "components/images/chart.svg";
 
 const StyledReportLink = styled(NavLink)(({ props }) => ({
   textDecoration: "none",
@@ -15,6 +16,13 @@ const StyledReportLink = styled(NavLink)(({ props }) => ({
 const StyledSpan = styled.span((props) => ({
   marginTop: "40px",
   marginBottom: "40px",
+
+  "@media(min-width: 768px)": {
+    // marginLeft: 111,
+    marginTop: 0,
+    marginBottom: 0,
+    alignItems: "flex-start",
+  },
 }));
 
 export { StyledReportLink, StyledSpan };

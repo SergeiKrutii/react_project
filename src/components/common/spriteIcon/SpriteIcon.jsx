@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import sprite from "components/images/image-sprite.svg";
+import { StyledSvg } from "./StyledSpriteIcon";
 
 const SpriteIcon = ({ name, ...props }) => {
   return (
-    <svg {...props}>
+    <StyledSvg {...props}>
       <use xlinkHref={`${sprite}#${name}`} />
-    </svg>
+    </StyledSvg>
   );
 };
 

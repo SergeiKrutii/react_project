@@ -7,7 +7,7 @@ export const SyledButton = styled.button((props) => ({
   justifyContent: "center",
   alignItems: "center",
 
-  border: "2px solid #FFF ",
+  border: "none",
 
   borderRadius: "16px",
   backgroundColor: "var(--main-bg-color)",
@@ -18,4 +18,12 @@ export const SyledButton = styled.button((props) => ({
   textTransform: "uppercase",
   fontWeight: 700,
   lineHeight: "normal",
+
+  boxShadow: "5px 10px 20px 0px rgba(170, 178, 197, 0.40)",
+  transition: "background-color 0.5s ease-in-out, color 0.5s ease-in-out",
+
+  "&:hover, &:focus": {
+    color: "var(--hover-button-color)",
+    backgroundColor: "var(--main-bg-button-color)",
+  },
 }));
