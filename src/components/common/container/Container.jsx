@@ -1,4 +1,4 @@
-import { StyledContainer } from "./StyledContainer";
+import { StyledContainer, StyledContainerAuth } from "./StyledContainer";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
 import MainBg from "./MainBg/MainBg";
@@ -15,13 +15,11 @@ const Container = ({ children }) => {
         </MainBg>
       ) : (
         <AuthBg>
-          <StyledContainer>{children}</StyledContainer>
+          <StyledContainerAuth>{children}</StyledContainerAuth>
         </AuthBg>
       )}
     </>
   );
 };
-
-Container.propTypes = {};
 
 export default Container;

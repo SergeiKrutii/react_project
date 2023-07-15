@@ -21,3 +21,25 @@ export const StyledContainer = styled.div(() => ({
     paddingRight: 110,
   },
 }));
+
+export const StyledContainerAuth = styled.div(() => ({
+  fontFamily: "Roboto",
+  color: "var(--primary-color)",
+  minHeight: 511,
+  margin: "0 auto",
+  maxWidth: 320,
+  paddingLeft: 10,
+  paddingRight: 10,
+
+  "@media screen  and (min-width: 768px)": {
+    maxWidth: 768,
+    paddingLeft: 51,
+    paddingRight: 52,
+  },
+
+  "@media screen  and (min-width: 1280px)": {
+    maxWidth: 1280,
+    paddingLeft: 110,
+    paddingRight: 110,
+  },
+}));

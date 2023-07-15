@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const StyledHeader = styled.header(() => ({
-  // position: 'absolute',
+  // position: 'fixed',
   height: 56,
-  marginLeft: 28,
-  marginRight: 28,
+  marginLeft: 19,
+  marginRight: 19,
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -21,10 +21,6 @@ export const StyledAuth = styled.div(() => ({
   borderBottomLeftRadius: 100,
 
   "@media(min-width: 768px)": {
-    height: 582,
-  },
-
-  "@media(min-width: 1280px)": {
     height: 526,
   },
 }));

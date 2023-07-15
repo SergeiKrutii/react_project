@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import { SyledButton } from "./StyledButton";
 
-const Button = ({ btnText, btnAction, ...props }) => {
+const Button = ({ btnText, btnAction }) => {
   return (
-    <SyledButton {...props} type="button" onClick={btnAction}>
+    <SyledButton type="button" onClick={btnAction}>
       {btnText}
     </SyledButton>
   );

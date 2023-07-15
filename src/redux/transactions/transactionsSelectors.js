@@ -1,21 +1,10 @@
-const selectIncTransaction = (state) => state.transactions.newIncTransaction;
-const selectNewIncBalance = (state) =>
-  state.transactions.newIncTransaction?.newBalance;
-const selectNewExpBalance = (state) =>
-  state.transactions.newExpTransaction?.newBalance;
-const selectExpTransaction = (state) => state.transactions.newExpTransaction;
-const selectIncCategory = (state) => state.transactions.incCategory;
-const selectExpCategory = (state) => state.transactions.expCategory;
-const selectTransactionPeriod = (state) => state.transactions.transactionPeriod;
+const selectExpence = (state) =>
+  state.transactions?.expTransaction?.monthsStats;
+const selectIncome = (state) => state.transactions?.incTransaction?.monthsStats;
 
 const transactionSelectors = {
-  selectIncTransaction,
-  selectExpTransaction,
-  selectIncCategory,
-  selectExpCategory,
-  selectTransactionPeriod,
-  selectNewIncBalance,
-  selectNewExpBalance,
+  selectExpence,
+  selectIncome,
 };
 
 export default transactionSelectors;

@@ -7,136 +7,88 @@ import {
   StyledButton,
   StyledBalanceInput,
   StyledCalculateWrap,
-  StyledTransactionWraper,
-  StyledButtonWraper,
-  StyledInputBalanceWrap,
 } from "./StyledTransactionAdd";
+import Container from "components/common/container/Container";
 import SpriteIcon from "components/common/spriteIcon/SpriteIcon";
 import Button from "components/common/button/Button";
-import { useNavigate } from "react-router-dom";
-import { useMatchMedia } from "helpers/mediaQuery";
+import { usePeriodDataQuery } from "redux/transactions/transactionsApiSlice";
 
-const TransactionAdd = ({
-  descriptionTitle,
-  categoryTitle,
-  categoryes,
-  onAddTransaction,
-}) => {
-  const [category, setCategory] = useState("");
-  const [incomeAmount, setAmount] = useState("");
-  const [description, setDescription] = useState("");
-  const navigate = useNavigate();
+const TransactionAdd = ({ description, category }) => {
+  const [categoryes, setCategoryes] = useState("");
+  const [balance, setBalance] = useState("");
+  //////////////////////////////////////////////////////////////////
+  //ПРИМЕР ОБЪЕКТА ДЛЯ ДОБАВЛЕНИЯ ДЕНЕГ И РАСХОДА (ОДИНАКОВО)
+  // const cred = {
+  //   description: "Аванс",
+  //   amount: 1001,
+  //   date: "2023-07-01",
+  //   category: "З/П",
+  // };
 
-  const { isDesktop, isTablet, isMobile } = useMatchMedia();
+  // const [addIncome, { data }] = useAddIncomeMutation();
+  // console.log("🚀 ~ data:", data);
+  //////////////////////////////////////////////////////////////////
 
-  const date = new Date();
-
-  const formatDate = (date) => {
-    let month = "" + (date.getMonth() + 1);
-    let day = "" + date.getDate();
-    let year = date.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [year, month, day].join("-");
-  };
-
-  const handleInputChange = (e) => {
-    setDescription(e.target.value);
-  };
-
-  const normalizeDate = formatDate(date);
-
-  const newTransaction = {
-    description,
-    amount: Number(incomeAmount),
-    date: normalizeDate,
-    category,
-  };
-
-  const handleChange = (e) => {
-    setCategory(e.target.value);
+  const handleChange = (event) => {
+    setCategoryes(event.target.value);
   };
 
   const handleBalanceChange = (e) => {
-    setAmount(e.currentTarget.value);
-  };
-
-  const handleReset = () => {
-    setAmount("");
-    setCategory("");
-    setDescription("");
+    setBalance(e.currentTarget.value);
   };
 
   return (
-    <StyledTransactionWraper>
-      {isMobile && (
-        <StyledButton type="button" onClick={() => navigate("/home")}>
+    <div>
+      <Container>
+        <StyledButton type="button">
           <SpriteIcon
             name={"icon-goback-button"}
             style={{ width: "24px", height: "24px" }}
           />
         </StyledButton>
-      )}
-
-      <StyledForm>
-        <StyledInput
-          type="text"
-          name="product"
-          placeholder={descriptionTitle}
-          maxLength={20}
-          minLength={3}
-          value={description}
-          onChange={handleInputChange}
-          size={20}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          required
-        />
-        <StyledSelect
-          onChange={handleChange}
-          label="Category"
-          defaultValue={categoryTitle}
-        >
-          <option value={category} style={{ display: "none" }}>
-            {categoryTitle}
-          </option>
-          {categoryes &&
-            categoryes.map((elem, idx) => (
-              <option key={`${idx}${elem}`} value={`${elem}`}>
-                {elem}
-              </option>
-            ))}
-        </StyledSelect>
-        <StyledInputBalanceWrap>
-          {/* <div> */}
-          <StyledBalanceInput
-            type="number"
-            placeholder={isMobile ? "00.00 UAH" : "00.00"}
-            value={incomeAmount}
-            onChange={handleBalanceChange}
+        <StyledForm>
+          <StyledInput
+            type="text"
+            name="product"
+            placeholder={description}
+            maxLength={20}
+            minLength={3}
+            size={20}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            required
           />
-          {/* </div> */}
-          <StyledCalculateWrap>
-            <SpriteIcon
-              name={"icon-calculator"}
-              style={{ marginLeft: "15px", marginRight: "10px" }}
-            />
-          </StyledCalculateWrap>
-        </StyledInputBalanceWrap>
-      </StyledForm>
-      <StyledButtonWraper>
-        <Button
-          btnText="ВВОД"
-          btnAction={() => onAddTransaction(newTransaction)}
-        />
-        <Button
-          style={{ marginLeft: "15px" }}
-          btnText="ОЧИСТИТЬ"
-          btnAction={handleReset}
-        />
-      </StyledButtonWraper>
-    </StyledTransactionWraper>
+          <StyledSelect label="Category" defaultValue={category}>
+            <option value={""} style={{ display: "none" }}>
+              {category}
+            </option>
+          </StyledSelect>
+          <div
+            style={{ display: "flex", alignItems: "center", marginTop: "30px" }}
+          >
+            <div>
+              <StyledBalanceInput
+                type="text"
+                placeholder="00.00 UAH"
+                value={balance}
+                onChange={handleBalanceChange}
+              />
+            </div>
+            <StyledCalculateWrap>
+              <SpriteIcon
+                name={"icon-calculator"}
+                style={{ width: "20px", height: "20px" }}
+              />
+            </StyledCalculateWrap>
+          </div>
+        </StyledForm>
+      </Container>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "83px" }}
+      >
+        <Button btnText="ВВОД" btnAction={() => {}} />
+        <Button btnText="ОЧИСТИТЬ" btnAction={() => {}} />
+      </div>
+    </div>
   );
 };
 

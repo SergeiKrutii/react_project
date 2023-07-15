@@ -1,24 +1,13 @@
 import SpriteIcon from "../spriteIcon/SpriteIcon";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import {
-  StyledCalendarComponent,
-  StyledCalendar,
-  StyledDate,
-} from "./StyledCalendar";
+import { StyledCalendar, StyledDate } from "./StyledCalendar";
 import { usePeriodDataQuery } from "redux/transactions/transactionsApiSlice";
 
-const CalendarComponent = ({ onUserData }) => {
+const CalendarComponent = () => {
   const [onShow, setOnShow] = useState(false);
   const [value, setValue] = useState(new Date());
-
-  // const currentDate = useRef(formatDate(value));
-  // console.log("🚀 ~ currentDate:", currentDate.current);
-
-  useEffect(() => {
-    onUserData(transactionDate(value));
-  }, [onUserData, value]);
 
   const handleToggleCalendar = () => {
     setOnShow(!onShow);
@@ -29,7 +18,7 @@ const CalendarComponent = ({ onUserData }) => {
     setOnShow(!onShow);
   };
 
-  function formatDate(date) {
+  const formatDate = (date) => {
     let month = "" + (date.getMonth() + 1);
     let day = "" + date.getDate();
     let year = date.getFullYear();
@@ -38,21 +27,10 @@ const CalendarComponent = ({ onUserData }) => {
     if (day.length < 2) day = "0" + day;
 
     return [day, month, year].join(".");
-  }
-
-  function transactionDate(date) {
-    let month = "" + (date.getMonth() + 1);
-    let day = "" + date.getDate();
-    let year = date.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [year, month, day].join("-");
-  }
+  };
 
   return (
-    <div style={{ position: "relative" }}>
+    <>
       <StyledCalendar onClick={handleToggleCalendar}>
         <SpriteIcon
           name={"icon-calendar"}
@@ -61,14 +39,14 @@ const CalendarComponent = ({ onUserData }) => {
         <StyledDate>{formatDate(value)}</StyledDate>
       </StyledCalendar>
       {onShow && (
-        <StyledCalendarComponent
-          style={{ width: "100px", position: "absolite" }}
+        <Calendar
+          style={{ width: "100px" }}
           onClickDay={onChangeDate}
           onChange={onChangeDate}
           value={value}
         />
       )}
-    </div>
+    </>
   );
 };
 
