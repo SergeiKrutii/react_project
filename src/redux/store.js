@@ -18,7 +18,7 @@ import {
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token", "refreshToken", "sessionId"],
+  whitelist: ["token", "refreshToken", "sessionId", "isLoggedIn"],
 };
 
 export const store = configureStore({
