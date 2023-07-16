@@ -107,7 +107,7 @@ const App = () => {
                     element={<Navigate to="/home/income" />}
                   />
 
-                  <Route path="/home/" element={<HomeView />}>
+                  <Route path="/home" element={<HomeView />}>
                     <Route path="expence" element={<AddExpenceView />} />
                     <Route path="income" element={<AddIncomeView />} />
                   </Route>
