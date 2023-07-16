@@ -12,17 +12,17 @@ const HomePageNav = () => {
     <>
       {isMobile && (
         <StyledHomePageNav>
-          <StyledMobNavLink to={"/add-expence"}>РАСХОД</StyledMobNavLink>
-          <StyledMobNavLink to={"/add-income"}>ДОХОД</StyledMobNavLink>
+          <StyledMobNavLink to={"expence"}>РАСХОД</StyledMobNavLink>
+          <StyledMobNavLink to={"income"}>ДОХОД</StyledMobNavLink>
         </StyledHomePageNav>
       )}
 
       {isTablet && (
         <StyledHomePageNav>
-          <StyledTabNavLink to={"/add-expence"} className={"active"}>
+          <StyledTabNavLink to={"expence"} className={"active"}>
             РАСХОД
           </StyledTabNavLink>
-          <StyledTabNavLink to={"/add-income"} className={"active"}>
+          <StyledTabNavLink to={"income"} className={"active"}>
             ДОХОД
           </StyledTabNavLink>
         </StyledHomePageNav>

@@ -7,12 +7,12 @@ import StyledHeader from "./StyledHeader";
 import UserMenu from "./userMenu/UserMenu";
 import { StyledAuth } from "./StyledHeader";
 
-const Header = () => {
+const Header = ({ toggleModal }) => {
   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);
   return (
     <StyledHeader>
       <img src={logoMob} alt="logo" />
-      {isLoggedIn ? <UserMenu /> : null}
+      {isLoggedIn && <UserMenu toggleModal={toggleModal} />}
       <StyledAuth />
     </StyledHeader>
   );
