@@ -6,6 +6,7 @@ export const SyledButton = styled.button((props) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  cursor: "pointer",
 
   border: "none",
 

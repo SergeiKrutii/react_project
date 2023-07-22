@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useSigninMutation, useLoginMutation } from "redux/auth/authApiSlice";
 
+import Button from "components/common/button/Button";
+
 import {
   StyledAuthInput,
   StyledAuthForm,
@@ -14,8 +16,6 @@ import {
   StyledGoogleIcon,
   StyledErrorText,
 } from "./StyledAuthView";
-
-import { StyledButtonBasic } from "components/common/StyledComponents/StyledButtonBasic";
 
 import LogoMobile from "../../../src/components/images/mainLogoMob.svg";
 
@@ -117,12 +117,8 @@ const AuthView = () => {
           />
           <StyledErrorText>{passwordErrorMessage}</StyledErrorText>
           <StyledButtonBox>
-            <StyledButtonBasic type="button" onClick={handleLogin}>
-              Login
-            </StyledButtonBasic>
-            <StyledButtonBasic type="button" onClick={handleRegistration}>
-              Registration
-            </StyledButtonBasic>
+            <Button btnText="Login" btnAction={handleLogin} />
+            <Button btnText="Registration" btnAction={handleRegistration} />
           </StyledButtonBox>
         </StyledAuthForm>
       </StyledAuth>

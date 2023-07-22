@@ -49,7 +49,6 @@ export const StyledLogOut = styled.button(() => ({
     cursor: "pointer",
     fontSize: 12,
     textAlign: "center",
-    // lineHeight: 14,
     letterSpacing: 0.04,
     textDecorationLine: "underline",
     color: "var(--secondary-color)",

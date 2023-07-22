@@ -16,6 +16,10 @@ import { useGetUserQuery, useRefreshMutation } from "redux/auth/authApiSlice";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
 import { useEffect, useState } from "react";
+
+import AddIncomeView from "pages/AddExpencePage/AddExpencePage";
+import AddExpenseView from "pages/AddIncomePage/AddIncomePage";
+
 import { useMatchMedia } from "helpers/mediaQuery";
 import { useLocation } from "react-router-dom";
 import PeriodSummary from "components/common/PeriodSummary/PeriodSummary";
@@ -23,8 +27,6 @@ import {
   useGetExpenseQuery,
   useGetIncomeQuery,
 } from "redux/transactions/transactionsApiSlice";
-import AddIncomeView from "views/AddIncomeView/AddIncomeView";
-import AddExpenseView from "views/AddExpenceView/AddExpenseView";
 
 const HomeView = (props) => {
   const [userDataChoice, setUserDataChoice] = useState("");

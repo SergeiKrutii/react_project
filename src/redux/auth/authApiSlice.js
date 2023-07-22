@@ -8,6 +8,8 @@ import {
   setIsrefreshToken,
 } from "./authSlice";
 
+import { toast } from "react-toastify";
+
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     signin: builder.mutation({
@@ -21,6 +23,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         try {
           await queryFulfilled;
         } catch (err) {
+          toast.error(`${err.error.data.message}`);
           console.log(err);
         }
       },
@@ -37,6 +40,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
           const { data } = await queryFulfilled;
           dispatch(setLoginData(data));
         } catch (err) {
+          toast.error(`${err.error.data.message}`);
           console.log(err);
         }
       },
