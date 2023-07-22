@@ -1,19 +1,26 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
+import { NavLink } from "react-router-dom";
+import { useMatchMedia } from "helpers/mediaQuery";
 
 import logoMob from "components/images/mobile_logo.svg";
-import StyledHeader from "./StyledHeader";
-import UserMenu from "./userMenu/UserMenu";
-import { StyledAuth } from "./StyledHeader";
+import { StyledHeader, StyledHeaderBox, StyledAuth } from "./StyledHeader";
+import UserMenu from "./UserMenu/UserMenu";
 
 const Header = ({ toggleModal }) => {
+  const { isMobile } = useMatchMedia();
   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);
+
   return (
     <StyledHeader>
-      <img src={logoMob} alt="logo" />
-      {isLoggedIn && <UserMenu toggleModal={toggleModal} />}
-      <StyledAuth />
+      <StyledHeaderBox>
+        <NavLink to={isMobile ? "/home" : "/home/expence"}>
+          <img src={logoMob} alt="logo" />
+        </NavLink>
+        {isLoggedIn && <UserMenu toggleModal={toggleModal} />}
+        <StyledAuth />
+      </StyledHeaderBox>
     </StyledHeader>
   );
 };

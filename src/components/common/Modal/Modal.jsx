@@ -7,8 +7,8 @@ import {
   StyledModalText,
   StyledModalButtonBox,
 } from "./StyledModal";
-import { StyledButtonBasic } from "../StyledComponents/StyledButtonBasic";
 import CloseIcon from "../../images/close.svg";
+import Button from "../button/Button";
 
 const Modal = ({ toggleModal, textModal, hendelLogOut }) => {
   const portalModal = document.querySelector("#modalRoot");
@@ -40,8 +40,8 @@ const Modal = ({ toggleModal, textModal, hendelLogOut }) => {
         <StyledClose src={CloseIcon} onClick={toggleModal} />
         <StyledModalText>{textModal}</StyledModalText>
         <StyledModalButtonBox>
-          <StyledButtonBasic onClick={hendelLogOut}>Да</StyledButtonBasic>
-          <StyledButtonBasic onClick={toggleModal}>Нет</StyledButtonBasic>
+          <Button btnText="Да" btnAction={hendelLogOut} />
+          <Button btnText="Нет" btnAction={toggleModal} />
         </StyledModalButtonBox>
       </StyledModalBox>
     </StyledModalBackDrop>,

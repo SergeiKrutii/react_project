@@ -7,6 +7,8 @@ import {
   setUser,
 } from "./authSlice";
 
+import { toast } from "react-toastify";
+
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     signin: builder.mutation({
@@ -21,6 +23,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
           const { data } = await queryFulfilled;
           dispatch(setRegisterData(data.email));
         } catch (err) {
+          toast.error(`${err.error.data.message}`);
           console.log(err);
         }
       },
@@ -37,6 +40,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
           const { data } = await queryFulfilled;
           dispatch(setLoginData(data));
         } catch (err) {
+          toast.error(`${err.error.data.message}`);
           console.log(err);
         }
       },

@@ -15,7 +15,7 @@ import { useGetUserQuery } from "redux/auth/authApiSlice";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
 import { useState } from "react";
-import AddExpenceView from "views/AddExpenceView/AddExpenceView";
+import AddExpenceView from "pages/AddExpencePage/AddExpencePage";
 import { useMatchMedia } from "helpers/mediaQuery";
 import { useLocation } from "react-router-dom";
 

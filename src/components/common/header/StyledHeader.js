@@ -1,13 +1,24 @@
 import styled from "styled-components";
 
-const StyledHeader = styled.header(() => ({
-  // position: 'fixed',
+export const StyledHeader = styled.header(() => ({
+  "@media screen  and (min-width: 1280px)": {
+    maxWidth: 1280,
+    margin: "auto",
+  },
+}));
+
+export const StyledHeaderBox = styled.div(() => ({
   height: 56,
   marginLeft: 19,
   marginRight: 19,
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+
+  "@media(min-width: 768px)": {
+    marginLeft: 26,
+    marginRight: 26,
+  },
 }));
 
 export const StyledAuth = styled.div(() => ({
@@ -24,5 +35,3 @@ export const StyledAuth = styled.div(() => ({
     height: 526,
   },
 }));
-
-export default StyledHeader;
