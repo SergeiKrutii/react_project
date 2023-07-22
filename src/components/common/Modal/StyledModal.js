@@ -10,6 +10,7 @@ export const StyledModalBackDrop = styled.div(() => ({
   opacity: 1,
   visibility: "visible",
   zIndex: 999,
+  overflow: "hidden",
 }));
 
 export const StyledModalBox = styled.div(() => ({
@@ -36,6 +37,7 @@ export const StyledClose = styled.img(() => ({
   position: "absolute",
   top: 15,
   right: 15,
+  cursor: "pointer",
 }));
 
 export const StyledModalText = styled.p(() => ({
