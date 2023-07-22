@@ -22,11 +22,12 @@ import { useMatchMedia } from "helpers/mediaQuery";
 const FinanceOperationList = ({ transactions }) => {
   const [deleteTransaction] = useDeleteTransactionMutation();
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
+  let deviseSize = isTablet || isDesktop;
   const emptyCount = 9;
 
   return (
-    <>
-      {isTablet && (
+    <div>
+      {deviseSize && (
         <StyledHeaderList>
           <StyledHeaderListItem>ДАТА</StyledHeaderListItem>
           <StyledHeaderListItem>ОПИСАНИЕ</StyledHeaderListItem>
@@ -74,14 +75,14 @@ const FinanceOperationList = ({ transactions }) => {
           ))
         ) : (
           <>
-            {isTablet &&
+            {deviseSize &&
               Array.from({ length: emptyCount }, (_, idx) => (
                 <StyledEmptyItem key={idx}></StyledEmptyItem>
               ))}
           </>
         )}
       </StyledFinanceOperationList>
-    </>
+    </div>
   );
 };
 

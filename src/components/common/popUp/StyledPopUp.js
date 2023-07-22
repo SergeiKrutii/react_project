@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const StyledPopUp = styled.div(({ prop }) => ({
-  position: "relative",
+const StyledPopUp = styled.div((prop) => ({
+  position: "absolute",
   padding: "30px 25px",
   backgroundImage:
     "var(--main-popup-color, linear-gradient(155deg, #1D346A 0%, #031634 100%))",
@@ -10,6 +10,20 @@ export const StyledPopUp = styled.div(({ prop }) => ({
   marginTop: "16px",
   fontSize: "14px",
   lineHeight: "20px",
+  zIndex: "5",
+
+  "@media screen and (min-width: 320px) and (max-width: 767px)": {
+    top: 165,
+    left: -6,
+  },
+  "@media screen and (min-width: 768px) and (max-width: 1279px)": {
+    top: 45,
+    left: 169,
+  },
+  "@media screen and (min-width: 1280px)": {
+    top: 85,
+    left: 680,
+  },
 
   "::before": {
     content: "''",
@@ -28,3 +42,9 @@ export const StyledPopUp = styled.div(({ prop }) => ({
     marginBottom: "20px",
   },
 }));
+
+const StyledPopUpText = styled.p`
+  width: 232px;
+`;
+
+export { StyledPopUp, StyledPopUpText };

@@ -1,7 +1,7 @@
 import { apiSlice } from "app/api/apiSlice";
 import {
   setIncome,
-  setExpence,
+  setExpense,
   setIncCategory,
   setExpCategory,
   setTransactionPeriod,
@@ -40,7 +40,7 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
-    addExpence: builder.mutation({
+    addExpense: builder.mutation({
       query: (data) => ({
         url: "/transaction/expense",
         method: "POST",
@@ -51,13 +51,13 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           console.log("🚀 ~ data:", data);
-          dispatch(setExpence(data));
+          dispatch(setExpense(data));
         } catch (err) {
           console.log(err);
         }
       },
     }),
-    getExpence: builder.query({
+    getExpense: builder.query({
       query: () => ({
         url: "/transaction/expense",
         method: "GET",
@@ -66,7 +66,7 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setExpence(data));
+          dispatch(setExpense(data));
         } catch (err) {
           console.log(err);
         }
@@ -94,7 +94,7 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
-    expenceCategory: builder.query({
+    expenseCategory: builder.query({
       query: () => ({
         url: "/transaction/expense-categories",
         method: "GET",
@@ -129,11 +129,11 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useAddExpenceMutation,
+  useAddExpenseMutation,
   useAddIncomeMutation,
   useDeleteTransactionMutation,
-  useExpenceCategoryQuery,
-  useGetExpenceQuery,
+  useExpenseCategoryQuery,
+  useGetExpenseQuery,
   useGetIncomeQuery,
   useIncomeCategoryQuery,
   usePeriodDataQuery,

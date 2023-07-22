@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledHomePageNav = styled.div(() => ({
-  width: "100%",
+  // width: "100%",
   display: "flex",
   flexWrap: "nowrap",
   justifyContent: "center",
@@ -13,13 +13,19 @@ const StyledHomePageNav = styled.div(() => ({
 
   "@media screen and (min-width: 768px)": {
     position: "absolute",
-    top: -41,
-    left: -194,
+    top: -40,
+    left: 0,
 
     "&.active": {
       backgroundColor: "#fff",
       color: "var(--main-bg-button-color)",
     },
+  },
+  "@media screen and (min-width: 1279px)": {
+    position: "absolute",
+    top: -40,
+    left: 0,
+    // width: "278px",
   },
 }));
 
@@ -75,6 +81,11 @@ const StyledTabNavLink = styled(NavLink)(() => ({
   "&:hover, &:focus": {
     color: "var(--main-bg-button-color)",
     backgroundColor: "var(--hover-button-color)",
+  },
+
+  "&.active": {
+    backgroundColor: "#fff",
+    color: "var(--main-bg-button-color)",
   },
 }));
 

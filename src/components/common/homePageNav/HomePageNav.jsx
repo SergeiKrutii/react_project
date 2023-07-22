@@ -7,22 +7,29 @@ import {
 
 const HomePageNav = () => {
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
+  let deviseSize = isTablet || isDesktop;
 
   return (
     <>
       {isMobile && (
         <StyledHomePageNav>
-          <StyledMobNavLink to={"expence"}>РАСХОД</StyledMobNavLink>
+          <StyledMobNavLink to={"expense"}>РАСХОД</StyledMobNavLink>
           <StyledMobNavLink to={"income"}>ДОХОД</StyledMobNavLink>
         </StyledHomePageNav>
       )}
 
-      {isTablet && (
+      {deviseSize && (
         <StyledHomePageNav>
-          <StyledTabNavLink to={"expence"} className={"active"}>
+          <StyledTabNavLink
+            to={"expense"}
+            className={(navData) => (navData.isActive ? "active" : "link")}
+          >
             РАСХОД
           </StyledTabNavLink>
-          <StyledTabNavLink to={"income"} className={"active"}>
+          <StyledTabNavLink
+            to={"income"}
+            className={(navData) => (navData.isActive ? "active" : "link")}
+          >
             ДОХОД
           </StyledTabNavLink>
         </StyledHomePageNav>

@@ -8,6 +8,9 @@ const StyledTransactionWraper = styled.div(() => ({
     // marginTop: "40px",
     // alignItems: "flex-start",
   },
+  "@media screen and (min-width: 1280px)": {
+    display: "flex",
+  },
 }));
 
 const StyledForm = styled.form(() => ({
@@ -46,6 +49,10 @@ const StyledInput = styled.input(() => ({
     borderRight: "none",
     borderTopRightRadius: 0,
   },
+  "@media screen and (min-width: 1280px)": {
+    width: "231px",
+    height: "37px",
+  },
 }));
 const StyledSelect = styled.select(() => ({
   width: "100%",
@@ -65,15 +72,6 @@ const StyledSelect = styled.select(() => ({
     padding: "2px 15px 2px 20px",
     border: "2px solid var(--main-bg-color)",
     borderRight: "none",
-
-    // "&:after": {
-    //   content: "",
-    //   position: "absolute",
-    //   top: "50%",
-    //   right: "10px",
-    //   transform: "translateY(-50%)",
-    //   /* Дополнительные стили для стрелочки */
-    // },
   },
 }));
 
@@ -93,6 +91,10 @@ const StyledButtonWraper = styled.div(() => ({
 
   "@media screen and (min-width: 768px)": {
     margin: "30px 0px 48px 35px",
+    justifyContent: "normal",
+  },
+  "@media screen and (min-width: 1280px)": {
+    margin: "0px 0px 0px 30px",
     justifyContent: "normal",
   },
 }));
@@ -159,6 +161,9 @@ const StyledCalculateWrap = styled.div(() => ({
     borderRadius: 0,
     width: "auto",
     height: "40px",
+  },
+  "@media screen and (min-width: 1280px)": {
+    width: "84px",
   },
 }));
 

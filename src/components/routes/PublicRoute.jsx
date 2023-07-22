@@ -5,11 +5,9 @@ import { useMatchMedia } from "helpers/mediaQuery";
 
 const PublicRoute = () => {
   const { isMobile } = useMatchMedia();
-
   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);
-  console.log("Public", isLoggedIn);
 
-  return <>{isLoggedIn ? <Navigate to="/home/expence" /> : <Outlet />}</>;
+  return <>{isLoggedIn ? <Navigate to="/home/expense" /> : <Outlet />}</>;
 };
 
 export default PublicRoute;

@@ -16,11 +16,12 @@ import Container from "components/common/container/Container";
 
 import HomeView from "views/HomeView/HomeView";
 import Header from "components/common/header/Header";
-import AddExpenceView from "views/AddExpenceView/AddExpenceView";
+
 import AddIncomeView from "views/AddIncomeView/AddIncomeView";
 
 import PrivateRoute from "components/routes/PrivateRoute";
 import PublicRoute from "components/routes/PublicRoute";
+import AddExpenseView from "views/AddExpenceView/AddExpenseView";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -32,25 +33,6 @@ const App = () => {
     logout();
     toggleModal();
   };
-  // const [refresh] = useRefreshMutation();
-  // const token = useSelector(authSelectors.selectToken);
-  // const { data } = useGetUserQuery(undefined, {
-  //   skip: !token,
-  //   refetchOnMountOrArgChange: true,
-  // });
-
-  // useEffect(() => {
-  //   if (token) {
-  //     getUser();
-  //   }
-  // }, [getUser, token]);
-
-  // useEffect(() => {
-  //   if (!!sid) {
-  //     refresh(sid);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [refresh]);
 
   return (
     <>
@@ -85,22 +67,22 @@ const App = () => {
                 <>
                   <Route path="/home" element={<HomeView />} />
                   <Route
-                    path="/home/expence"
-                    element={<Navigate to="/expence" />}
+                    path="/home/expense"
+                    element={<Navigate to="/expense" />}
                   />
                   <Route
                     path="/home/income"
                     element={<Navigate to="/income" />}
                   />
 
-                  <Route path="/expence" element={<AddExpenceView />} />
+                  <Route path="/expense" element={<AddExpenseView />} />
                   <Route path="/income" element={<AddIncomeView />} />
                 </>
               ) : (
                 <>
                   <Route
-                    path="/expence"
-                    element={<Navigate to="/home/expence" />}
+                    path="/expense"
+                    element={<Navigate to="/home/expense" />}
                   />
                   <Route
                     path="/income"
@@ -108,7 +90,7 @@ const App = () => {
                   />
 
                   <Route path="/home" element={<HomeView />}>
-                    <Route path="expence" element={<AddExpenceView />} />
+                    <Route path="expense" element={<AddExpenseView />} />
                     <Route path="income" element={<AddIncomeView />} />
                   </Route>
                 </>

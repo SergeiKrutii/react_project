@@ -5,6 +5,7 @@ import {
   setLogout,
   setRefresh,
   setUser,
+  setIsrefreshToken,
 } from "./authSlice";
 
 export const authApiSlice = apiSlice.injectEndpoints({
@@ -18,8 +19,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
-          const { data } = await queryFulfilled;
-          dispatch(setRegisterData(data.email));
+          await queryFulfilled;
         } catch (err) {
           console.log(err);
         }
@@ -57,13 +57,15 @@ export const authApiSlice = apiSlice.injectEndpoints({
       },
     }),
     refresh: builder.mutation({
-      query: (sid) => ({
+      query: (sessionId) => ({
         url: "/auth/refresh",
         method: "POST",
-        body: { sid },
+        body: { sid: sessionId },
+        // headers: { refreshToken: refToken },
       }),
 
-      async onQueryStarted(id, { getState, dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { getState, dispatch, queryFulfilled }) {
+        dispatch(setIsrefreshToken());
         try {
           const { data } = await queryFulfilled;
           dispatch(setRefresh(data));

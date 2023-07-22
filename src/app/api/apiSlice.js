@@ -6,21 +6,21 @@ const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
     const refreshToken = getState().auth.refreshToken;
-    const isRefreshid = getState().auth.isTokenRefreshed;
+    const isRefreshed = getState().auth.isTokenRefreshed;
 
-    if (token) {
-      headers.set("Authorization", `Bearer ${token}`);
-    }
-
-    // if (isRefreshid) {
-    //   if (refreshToken) {
-    //     headers.set("Authorization", `Bearer ${refreshToken}`);
-    //   }
-    // } else {
-    //   if (token) {
-    //     headers.set("Authorization", `Bearer ${token}`);
-    //   }
+    // if (token) {
+    //   headers.set("Authorization", `Bearer ${token}`);
     // }
+
+    if (isRefreshed) {
+      if (refreshToken) {
+        headers.set("Authorization", `Bearer ${refreshToken}`);
+      }
+    } else {
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+    }
 
     return headers;
   },

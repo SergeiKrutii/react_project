@@ -13,10 +13,6 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setRegisterData: (state, { payload }) => {
-      state.email = payload;
-      //   state.userData.id = payload.id;
-    },
     setLoginData: (state, { payload }) => {
       state.token = payload.accessToken;
       state.isTokenRefreshed = false;
@@ -30,12 +26,15 @@ const authSlice = createSlice({
     setLogout: (state, { payload }) => {
       return initialState;
     },
+    setIsrefreshToken: (state, { payload }) => {
+      state.isTokenRefreshed = true;
+    },
     setRefresh: (state, { payload }) => {
-      state.isTokenRefreshed = false;
       state.token = payload.newAccessToken;
       state.refreshToken = payload.newRefreshToken;
       state.sessionId = payload.newSid;
       state.isLoggedIn = true;
+      state.isTokenRefreshed = false;
     },
     setUser: (state, { payload }) => {
       state.userData.email = payload.email;
@@ -46,7 +45,12 @@ const authSlice = createSlice({
   },
 });
 
-export const { setRegisterData, setLoginData, setLogout, setRefresh, setUser } =
-  authSlice.actions;
+export const {
+  setIsrefreshToken,
+  setLoginData,
+  setLogout,
+  setRefresh,
+  setUser,
+} = authSlice.actions;
 
 export default authSlice.reducer;

@@ -19,5 +19,7 @@ export const StyledContainer = styled.div(() => ({
     maxWidth: 1280,
     paddingLeft: 110,
     paddingRight: 110,
+    display: "flex",
+    justifyContent: "center",
   },
 }));

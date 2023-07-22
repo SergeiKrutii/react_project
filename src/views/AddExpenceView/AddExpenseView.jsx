@@ -1,22 +1,27 @@
 import TransactionAdd from "components/TransactionAdd/TransactionAdd";
 import { useSelector } from "react-redux";
 import {
-  useExpenceCategoryQuery,
-  useAddExpenceMutation,
+  useExpenseCategoryQuery,
+  useAddExpenseMutation,
 } from "redux/transactions/transactionsApiSlice";
 import { useNavigate } from "react-router-dom";
 import transactionSelectors from "redux/transactions/transactionsSelectors";
+import { useMatchMedia } from "helpers/mediaQuery";
 
-const AddExpenceView = () => {
-  const { data, isSuccess } = useExpenceCategoryQuery();
-  const [addExpence] = useAddExpenceMutation();
+const AddExpenseView = () => {
+  const { data, isSuccess } = useExpenseCategoryQuery();
+  const [addExpense] = useAddExpenseMutation();
+  const { isTablet, isMobile } = useMatchMedia();
   const navigate = useNavigate();
 
   const handleConfirmExpense = async (expense) => {
     try {
-      await addExpence(expense);
-      if (isSuccess) {
+      await addExpense(expense);
+      if (isSuccess && isMobile) {
         navigate("/home");
+      }
+      if (isSuccess && isTablet) {
+        navigate("/home/expense");
       }
     } catch (error) {
       console.log(error);
@@ -35,4 +40,4 @@ const AddExpenceView = () => {
   );
 };
 
-export default AddExpenceView;
+export default AddExpenseView;

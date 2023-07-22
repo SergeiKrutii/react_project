@@ -120,7 +120,11 @@ const TransactionAdd = ({
           <StyledCalculateWrap>
             <SpriteIcon
               name={"icon-calculator"}
-              style={{ marginLeft: "15px", marginRight: "10px" }}
+              style={{
+                marginLeft: "15px",
+                marginRight: "10px",
+                fill: isTablet ? "#52555F" : "#1D2E4A",
+              }}
             />
           </StyledCalculateWrap>
         </StyledInputBalanceWrap>
@@ -128,7 +132,10 @@ const TransactionAdd = ({
       <StyledButtonWraper>
         <Button
           btnText="ВВОД"
-          btnAction={() => onAddTransaction(newTransaction)}
+          btnAction={() => {
+            onAddTransaction(newTransaction);
+            handleReset();
+          }}
         />
         <Button
           style={{ marginLeft: "15px" }}

@@ -1,19 +1,31 @@
 import styled from "styled-components";
 
-const StyledFinanceOperationList = styled.ul`
-  overflow-y: scroll;
-  margin-top: 20px;
-  height: 158px;
-  width: 282px;
+const StyledFinanceOperationList = styled.ul(() => ({
+  overflowY: "scroll",
+  marginTop: "20px",
+  height: "158px",
+  width: "282px",
 
-  @media screen and (min-width: 768px) {
-    margin-top: 0;
-    height: 346px;
-    width: auto;
-    border: 2px solid var(--main-bg-color);
-    scrollbar-color: #ff751d;
-  }
-`;
+  "@media screen and (min-width: 768px)": {
+    marginTop: 0,
+    height: "346px",
+    width: "auto",
+    border: "2px solid var(--main-bg-color)",
+
+    "::-webkit-scrollbar": {
+      width: 6,
+    },
+
+    "::-webkit-scrollbar-thumb": {
+      background: "var(--main-bg-button-color)",
+      borderRadius: 4,
+    },
+  },
+
+  "@media screen and (min-width: 1280px)": {
+    width: "756px",
+  },
+}));
 
 const StyledFinanceItem = styled.li(() => ({
   display: "flex",
@@ -34,7 +46,6 @@ const StyledFinanceItem = styled.li(() => ({
 const StyledFinanceItemWrap = styled.div(() => ({
   "@media screen and (min-width: 768px)": {
     display: "flex",
-    // flexDirection: "row-reverse",
     marginRight: "0px",
     marginLeft: "20px",
   },
@@ -54,6 +65,9 @@ const StyledFinanceTitle = styled.h2(() => ({
     letterSpacing: "0.48px",
     marginRight: "61px",
     color: "var(--secondary-color)",
+  },
+  "@media screen and (min-width: 1280px)": {
+    marginRight: "95px",
   },
 }));
 const StyledFinanceInfo = styled.p(() => ({
@@ -76,10 +90,21 @@ const StyledFinanceInfo = styled.p(() => ({
     fontWeight: 400,
     lineHeight: "normal",
     letterSpacing: "0.48px",
+    fontSize: "12px",
     color: "var(--secondary-color)",
     "&:last-child": {
       marginRight: "24px",
       width: "80px",
+    },
+  },
+
+  "@media screen and (min-width: 1280px)": {
+    marginRight: "158px",
+
+    color: "var(--secondary-color)",
+    "&:last-child": {
+      marginRight: "24px",
+      width: "111px",
     },
   },
 }));
@@ -88,7 +113,6 @@ const StyledFinanceInfoWraper = styled.div(() => ({
   display: "flex",
 
   "@media screen and (min-width: 768px)": {
-    // flexDirection: "row-reverse",
     marginRight: "42px",
   },
 }));
@@ -107,6 +131,9 @@ const StyledFinanceSumm = styled.span(({ transactionType }) => ({
   "@media screen and (min-width: 768px)": {
     marginRight: "40px",
     width: "70px",
+  },
+  "@media screen and (min-width: 1280px)": {
+    marginRight: "60px",
   },
 }));
 const StyledFinanceButton = styled.button(() => ({
@@ -130,6 +157,19 @@ const StyledHeaderList = styled.div(() => ({
   padding: "0px 84px 0px 20px",
   borderTopRightRadius: "20px",
   borderTopLeftRadius: "20px",
+
+  "@media screen and (min-width: 768px)": {
+    maxWidth: "604px",
+    // padding: "0px 136px 0px 20px",
+    paddingRight: "136px",
+    paddingLeft: "20px",
+  },
+  "@media screen and (min-width: 1280px)": {
+    width: "604px",
+    // // padding: "0px 136px 0px 20px",
+    // paddingRight: "136px",
+    // paddingLeft: "20px",
+  },
 }));
 
 const StyledHeaderListItem = styled.div(() => ({

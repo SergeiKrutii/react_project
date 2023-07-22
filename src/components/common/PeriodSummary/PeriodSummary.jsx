@@ -1,11 +1,3 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-// import { useGetIncomeQuery, useGetExpenceQuery } from 'redux/transactions/transactionsApiSlice'
-import {
-  useGetIncomeQuery,
-  useGetExpenceQuery,
-} from "redux/transactions/transactionsApiSlice";
-
 import {
   StyledSummaryBox,
   StyledSummaryTitle,
@@ -14,23 +6,23 @@ import {
   StyledMonth,
   StyledSum,
 } from "./StyledPeriodSummary";
+import { useLocation } from "react-router-dom";
 
-import transactionSelectors from "redux/transactions/transactionsSelectors";
-
-const PeriodSummary = () => {
-  const incomes = useSelector(transactionSelectors.selectIncome);
-  const expenses = useSelector(transactionSelectors.selectExpence);
-  // const { data: expenseData } = useGetExpenceQuery();
-  // const { data: incomeData } = useGetIncomeQuery();
-  // console.log(expenseData.monthsStats)
+const PeriodSummary = ({ incomes, expenses }) => {
+  const location = useLocation();
   if (incomes === undefined) return;
   if (expenses === undefined) return;
-  const incomesObj = Object.entries(incomes);
-  const expensesObj = Object.entries(expenses);
-  // console.log(incomesObj);
-  // console.log(expensesObj);
-  const markup = incomesObj.map(([month, sum]) => {
+
+  const monthsState =
+    location.pathname === "/home/expense"
+      ? expenses?.monthsStats
+      : incomes?.monthsStats;
+
+  const entriesData = Object.entries(monthsState);
+
+  const markup = entriesData?.map(([month, sum]) => {
     if (sum === "N/A") sum = 0;
+
     return (
       <StyledSummaryItem key={month}>
         <StyledMonth>{month}</StyledMonth>

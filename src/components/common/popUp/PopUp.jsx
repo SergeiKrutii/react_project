@@ -1,12 +1,14 @@
-import { StyledPopUp } from "./StyledPopUp";
+import { StyledPopUp, StyledPopUpText } from "./StyledPopUp";
 
 const PopUp = () => {
   return (
     <StyledPopUp>
-      <p className="textField">
+      <StyledPopUpText className="textField">
         Привет! Для начала работы внеси текущий баланс своего счета!
-      </p>
-      <p>Ты не можешь тратить деньги пока их у тебя нет :)</p>
+      </StyledPopUpText>
+      <StyledPopUpText>
+        Ты не можешь тратить деньги пока их у тебя нет :)
+      </StyledPopUpText>
     </StyledPopUp>
   );
 };

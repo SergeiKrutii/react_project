@@ -3,11 +3,17 @@ import styled from "styled-components";
 export const StyledSummaryBox = styled.div(() => ({
   width: 240,
   background: "var(--main-bg-color)",
+  marginRight: "auto",
+  marginBottom: 57,
   // background: "green",
-  marginLeft: 50,
+  marginLeft: 30,
   borderTopLeftRadius: 20,
   borderTopRightRadius: 20,
   borderBottomRightRadius: 20,
+
+  "@media screen and (min-width: 1280px)": {
+    width: 230,
+  },
 }));
 
 export const StyledSummaryTitle = styled.h2(() => ({

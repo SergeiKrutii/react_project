@@ -16,7 +16,7 @@ const transactionSlice = createSlice({
     setIncome: (state, { payload }) => {
       state.incTransaction = payload;
     },
-    setExpence: (state, { payload }) => {
+    setExpense: (state, { payload }) => {
       state.expTransaction = payload;
     },
     setIncCategory: (state, { payload }) => {
@@ -33,7 +33,7 @@ const transactionSlice = createSlice({
 
 export const {
   setIncome,
-  setExpence,
+  setExpense,
   setIncCategory,
   setExpCategory,
   setTransactionPeriod,

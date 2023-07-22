@@ -17,10 +17,6 @@ const BalanceComponent = ({ userBalance }) => {
   const [balance, setBalance] = useState("");
   const [setUserBalance] = useSetUserBalanceMutation();
 
-  // useEffect(() => {
-  //   if (stateBalance !== null) setBalance(stateBalance);
-  // }, [newExpBalance, newIncBalance, stateBalance]);
-
   useEffect(() => {
     setBalance(userBalance);
   }, [setBalance, userBalance]);
@@ -34,16 +30,15 @@ const BalanceComponent = ({ userBalance }) => {
     setBalance(e.currentTarget.value);
   };
 
-  const isEmptyBalance = balance === null;
-
+  const isEmptyBalance = balance === 0;
+  const placeholderText = isEmptyBalance ? "00.00 UAH" : `${balance}`;
   return (
     <StyledBalanceComponent>
       <StyledParagraph>Баланс:</StyledParagraph>
       <StyledBalanceForm onSubmit={handleSetNewBalance}>
         <StyledBalanceInput
           type="number"
-          disabled={!isEmptyBalance}
-          placeholder={`${balance} UAH`}
+          placeholder={placeholderText}
           onChange={handleBalanceChange}
         />
         <StyledButtonForm type="submit" disabled={isEmptyBalance}>

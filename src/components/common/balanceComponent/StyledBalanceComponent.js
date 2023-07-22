@@ -13,6 +13,9 @@ const StyledBalanceComponent = styled.div(({ prop }) => ({
     display: "flex",
     marginRight: 111,
   },
+  "@media(min-width: 1279px)": {
+    marginRight: 205,
+  },
 }));
 
 const StyledBalanceInput = styled.input({
