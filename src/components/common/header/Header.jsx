@@ -6,7 +6,7 @@ import { useMatchMedia } from "helpers/mediaQuery";
 
 import logoMob from "components/images/mobile_logo.svg";
 import { StyledHeader, StyledHeaderBox, StyledAuth } from "./StyledHeader";
-import UserMenu from "./UserMenu/UserMenu";
+import UserMenu from "./userMenu/UserMenu";
 
 const Header = ({ toggleModal }) => {
   const { isMobile } = useMatchMedia();
