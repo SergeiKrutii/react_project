@@ -6,7 +6,7 @@ const initialState = {
 
   incCategory: [],
   expCategory: [],
-  transactionPeriod: null,
+  arrayDataCategory: null,
 };
 
 const transactionSlice = createSlice({
@@ -25,8 +25,8 @@ const transactionSlice = createSlice({
     setExpCategory: (state, { payload }) => {
       state.expCategory = payload;
     },
-    setTransactionPeriod: (state, { payload }) => {
-      state.transactionPeriod = payload;
+    setArrayDataCategory: (state, { payload }) => {
+      state.arrayDataCategory = payload[1];
     },
   },
 });
@@ -36,7 +36,7 @@ export const {
   setExpense,
   setIncCategory,
   setExpCategory,
-  setTransactionPeriod,
+  setArrayDataCategory,
 } = transactionSlice.actions;
 
 export default transactionSlice.reducer;

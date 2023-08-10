@@ -6,7 +6,7 @@ import SpriteIcon from "../spriteIcon/SpriteIcon";
 const ReportLink = (props) => {
   return (
     <StyledSpan>
-      <StyledReportLink to="chart">
+      <StyledReportLink to="/chart">
         Перейти к отчетам{" "}
         <SpriteIcon name={"icon-chart"} style={{ marginLeft: "20px" }} />
       </StyledReportLink>

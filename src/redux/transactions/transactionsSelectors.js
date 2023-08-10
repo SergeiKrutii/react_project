@@ -6,16 +6,16 @@ const selectNewExpBalance = (state) =>
 const selectExpTransaction = (state) => state.transactions.newExpTransaction;
 const selectIncCategory = (state) => state.transactions.incCategory;
 const selectExpCategory = (state) => state.transactions.expCategory;
-const selectTransactionPeriod = (state) => state.transactions.transactionPeriod;
+const selectArrayDataCategory = (state) => state.transactions.arrayDataCategory;
 
 const transactionSelectors = {
   selectIncTransaction,
   selectExpTransaction,
   selectIncCategory,
   selectExpCategory,
-  selectTransactionPeriod,
   selectNewIncBalance,
   selectNewExpBalance,
+  selectArrayDataCategory,
 };
 
 export default transactionSelectors;

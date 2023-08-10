@@ -14,6 +14,7 @@ import Loader from "components/common/Loader/Loader";
 import PrivateRoute from "components/routes/PrivateRoute";
 import PublicRoute from "components/routes/PublicRoute";
 
+const ChartPage = lazy(() => import("pages/ChartPage/ChartPage"));
 const AuthPage = lazy(() => import("pages/AuthPage/AuthPage"));
 const HomePage = lazy(() => import("pages/HomePage/HomePage"));
 const AddExpencePage = lazy(() =>
@@ -77,6 +78,7 @@ const App = () => {
                   <Route path="/home" element={<HomePage />} />
                   <Route path="/expense" element={<AddExpencePage />} />
                   <Route path="/income" element={<AddIncomePage />} />
+                  <Route path="/chart" element={<ChartPage />} />
                 </>
               ) : (
                 //Tablet and Desktop
@@ -98,6 +100,7 @@ const App = () => {
                     <Route path="expense" element={<AddExpencePage />} />
                     <Route path="income" element={<AddIncomePage />} />
                   </Route>
+                  <Route path="/chart" element={<ChartPage />} />
                 </>
               )}
             </Route>
