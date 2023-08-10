@@ -4,7 +4,6 @@ import {
   setExpense,
   setIncCategory,
   setExpCategory,
-  setTransactionPeriod,
 } from "./transactionsSlice";
 
 export const transactionsApiSlice = apiSlice.injectEndpoints({
@@ -109,17 +108,15 @@ export const transactionsApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
-    periodData: builder.query({
+    periodData: builder.mutation({
       query: (date) => ({
-        url: "/transaction/period-data",
+        url: `/transaction/period-data?date=${date}`,
         method: "GET",
-        headers: date,
         providesTags: ["Transactions"],
       }),
-      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+      async onQueryStarted(id, { queryFulfilled }) {
         try {
-          const { data } = await queryFulfilled;
-          dispatch(setTransactionPeriod(data));
+          await queryFulfilled;
         } catch (err) {
           console.log(err);
         }
@@ -136,5 +133,5 @@ export const {
   useGetExpenseQuery,
   useGetIncomeQuery,
   useIncomeCategoryQuery,
-  usePeriodDataQuery,
+  usePeriodDataMutation,
 } = transactionsApiSlice;

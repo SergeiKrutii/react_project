@@ -15,7 +15,7 @@ const Header = ({ toggleModal }) => {
   return (
     <StyledHeader>
       <StyledHeaderBox>
-        <NavLink to={isMobile ? "/home" : "/home/expence"}>
+        <NavLink to={isMobile ? "/home" : "/home/expense"}>
           <img src={logoMob} alt="logo" />
         </NavLink>
         {isLoggedIn && <UserMenu toggleModal={toggleModal} />}
