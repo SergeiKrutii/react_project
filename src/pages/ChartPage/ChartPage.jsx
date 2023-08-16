@@ -54,63 +54,63 @@ const ChartPage = () => {
     navigate("/home");
   };
 
-  return (
-    <div>
-      <StyledChartContainer>
-        {isMobile ? (
-          // Мобильный макет
-          <>
-            <StyledButton type="button" onClick={handleGoBack}>
-              <SpriteIcon
-                name={"icon-goback-button"}
-                style={{ width: "24px", height: "24px" }}
-              />
-            </StyledButton>
-            <SliderDate periodDate={periodDate} />
-            <ChartBalance />
-            <IncomeExpenseTotal
-              expenseMonth={expenseMonth}
-              incomeMonth={incomeMonth}
+return (
+    <StyledChartContainer>
+      {isMobile ? (
+        // Мобильный макет
+        <>
+          <StyledButton type="button" onClick={handleGoBack}>
+            <SpriteIcon
+              name={"icon-goback-button"}
+              style={{ width: "24px", height: "24px" }}
             />
-          </>
-        ) : (
-          // Макет для планшетов и настольных компьютеров
-          <>
-            <StyledCharHeader>
-              <StyledChartBackBlock>
-                <StyledButton type="button" onClick={handleGoBack}>
-                  <SpriteIcon
-                    name={"icon-goback-button"}
-                    style={{ width: "24px", height: "24px" }}
-                  />
-                  {/* {!isMobile && <StyledChartBackText>Вернуться на главную</StyledChartBackText>} */}
-                </StyledButton>
+          </StyledButton>
+          <SliderDate periodDate={periodDate} />
+          <ChartBalance />
+          <IncomeExpenseTotal
+            expenseMonth={expenseMonth}
+            incomeMonth={incomeMonth}
+          />
+        </>
+      ) : (
+        // Макет для планшетов и настольных компьютеров
+        <>
+          <StyledCharHeader>
+            <StyledChartBackBlock>
+              <StyledButton
+                style={{ display: "flex", alignItems: "center" }}
+                type="button"
+                onClick={handleGoBack}
+              >
+                <SpriteIcon
+                  name={"icon-goback-button"}
+                  style={{ width: "24px", height: "24px" }}
+                />
                 {!isMobile && (
                   <StyledChartBackText>
                     Вернуться на главную
                   </StyledChartBackText>
                 )}
-              </StyledChartBackBlock>
-              <ChartBalance />
-              <SliderDate periodDate={periodDate} />
-            </StyledCharHeader>
-            <IncomeExpenseTotal
-              expenseMonth={expenseMonth}
-              incomeMonth={incomeMonth}
-            />
-          </>
-        )}
+              </StyledButton>
+            </StyledChartBackBlock>
+            <ChartBalance />
+            <SliderDate periodDate={periodDate} />
+          </StyledCharHeader>
+          <IncomeExpenseTotal
+            expenseMonth={expenseMonth}
+            incomeMonth={incomeMonth}
+          />
+        </>
+      )}
 
-        <ChartCategory
-          typeOfTransactions={typeOfTransactions}
-          typeOfCategory={typeOfCategory}
-          arrayTransactionsMonth={arrayTransactionsMonth}
-          handleChangeCategory={handleChangeCategory}
-          toggleActiveCategory={toggleActiveCategory}
-        />
-      </StyledChartContainer>
-      {findActiveCategory && <Chart chartData={findActiveCategory} />}
-    </div>
+      <ChartCategory
+        typeOfTransactions={typeOfTransactions}
+        typeOfCategory={typeOfCategory}
+        arrayTransactionsMonth={arrayTransactionsMonth}
+        handleChangeCategory={handleChangeCategory}
+        toggleActiveCategory={toggleActiveCategory}
+      />
+    </StyledChartContainer>
   );
 };
 

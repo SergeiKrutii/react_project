@@ -18,6 +18,7 @@ export const StyledChartBackText = styled.p({
   fontWeight: 400,
   letterSpacing: 0.48,
   marginLeft: 15,
+  cursor: "pointer",
 });
 
 export const StyledChartBackBlock = styled.div({

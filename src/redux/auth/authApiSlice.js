@@ -1,6 +1,5 @@
 import { apiSlice } from "app/api/apiSlice";
 import {
-  setRegisterData,
   setLoginData,
   setLogout,
   setRefresh,

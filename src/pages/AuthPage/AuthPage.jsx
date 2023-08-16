@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useSigninMutation, useLoginMutation } from "redux/auth/authApiSlice";
+import SpriteIcon from "components/common/spriteIcon/SpriteIcon";
 
+import { toast } from "react-toastify";
 import Button from "components/common/button/Button";
 
 import {
@@ -13,7 +15,6 @@ import {
   StyledTextInfo,
   StyledTextInput,
   StyledButtonBox,
-  StyledGoogleIcon,
   StyledErrorText,
 } from "./StyledAuthView";
 
@@ -24,6 +25,7 @@ const AuthView = () => {
   const [password, setPassword] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  const [googleError, setGoogleError] = useState(false);
 
   const [signin] = useSigninMutation();
   const [login] = useLoginMutation();
@@ -53,7 +55,8 @@ const AuthView = () => {
       login({ email, password });
     }
   };
-  const handleRegistration = () => {
+
+  const handleRegistration = async () => {
     !validateEmail(email)
       ? setEmailErrorMessage("Некорректно введен e-mail.")
       : setEmailErrorMessage("");
@@ -63,7 +66,11 @@ const AuthView = () => {
       : setPasswordErrorMessage("");
 
     if (validateEmail(email) && validatePassword(password)) {
-      signin({ email, password });
+      await signin({ email, password });
+      toast.success("Вы успешно зарегистрировались!");
+      setTimeout(() => {
+        login({ email, password });
+      }, 500);
     }
   };
 
@@ -85,10 +92,16 @@ const AuthView = () => {
           <StyledTextGoogle>
             Вы можете авторизоваться с помощью <br /> Google Account:
           </StyledTextGoogle>
-          <StyledGoogleBtn type="button">
-            <StyledGoogleIcon />
+          <StyledGoogleBtn type="button" onClick={() => setGoogleError(true)}>
+            <SpriteIcon
+              name={"icon-google-symbol"}
+              style={{ marginRight: 9 }}
+            />
             Google
           </StyledGoogleBtn>
+          {googleError && (
+            <StyledErrorText>Сервис, временно не доступен!</StyledErrorText>
+          )}
           <StyledTextInfo>
             Или зайти с помощью e-mail и пароля, предварительно
             зарегистрировавшись:

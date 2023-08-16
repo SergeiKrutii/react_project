@@ -12,6 +12,7 @@ export const StyledMainBg = styled.div(() => ({
 
   "@media(min-width: 1280px)": {
     minHeight: 794,
+    overflowX: "hidden",
   },
 }));
 
