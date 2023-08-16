@@ -8,7 +8,7 @@ import {
 
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useMatchMedia } from "helpers/mediaQuery";
-import { tabletChart } from "./chartConfig";
+import { tabletChart, mobileChart } from "./chartConfig";
 import { StyledChartWrap } from "./StyledChart";
 
 ChartJS.register(
@@ -19,15 +19,15 @@ ChartJS.register(
   Tooltip
 );
 
-const Chart = (props) => {
+const Chart = ({ chartData = {} }) => {
   const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
   const deviseSize = isTablet || isDesktop;
 
   return (
     <StyledChartWrap id="chart">
-      {/* {isMobile && mobileChart} */}
-      {deviseSize && tabletChart()}
+      {isMobile && mobileChart(chartData[1])}
+      {deviseSize && tabletChart(chartData[1])}
     </StyledChartWrap>
   );
 };

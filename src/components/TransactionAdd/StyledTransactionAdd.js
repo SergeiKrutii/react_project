@@ -33,12 +33,12 @@ const StyledInput = styled.input(() => ({
   borderTopRightRadius: "15px",
   border: "2px solid white",
   backgroundColor: "transparent",
-
+  cursor: "pointer",
   fontSize: "12px",
   letterSpacing: "0.24px",
 
   "::placeholder": {
-    color: "var(--category-placeholder-color)",
+    color: "var(--primary-color)",
   },
 
   "@media screen and (min-width: 768px)": {
@@ -50,7 +50,7 @@ const StyledInput = styled.input(() => ({
     borderTopRightRadius: 0,
   },
   "@media screen and (min-width: 1280px)": {
-    width: "231px",
+    width: "212px",
     height: "37px",
   },
 }));
@@ -58,12 +58,12 @@ const StyledSelect = styled.select(() => ({
   width: "100%",
   height: "44px",
   padding: "0px 20px",
-  borderBottomRightRadius: "15px",
   border: "2px solid white",
   borderTop: "none",
   backgroundColor: "transparent",
+  cursor: "pointer",
 
-  color: "var(--category-placeholder-color)",
+  color: "var(--primary-color)",
   fontSize: "12px",
   letterSpacing: "0.24px",
 
@@ -72,6 +72,9 @@ const StyledSelect = styled.select(() => ({
     padding: "2px 15px 2px 20px",
     border: "2px solid var(--main-bg-color)",
     borderRight: "none",
+  },
+  "@media screen and (min-width: 1280px)": {
+    width: "188px",
   },
 }));
 
@@ -101,27 +104,50 @@ const StyledButtonWraper = styled.div(() => ({
 
 const StyledInputBalanceWrap = styled.div(() => ({
   display: "flex",
-  // alignItems: "center",
   marginTop: "30px",
+  alignItems: "center",
+  width: 148,
+
+  "&::focus": {
+    borderStyle: "none",
+  },
   "@media screen and (min-width: 768px)": {
     marginTop: 0,
-    height: "44px",
+    width: 100,
+    height: "41px",
     border: "2px solid var(--main-bg-color)",
     borderTopRightRadius: "15px",
     borderBottomRightRadius: "15px",
+  },
+  "@media screen and (min-width: 1280px)": {
+    width: 140,
+  },
+}));
+const StyledBalanceSpan = styled.span(() => ({
+  marginLeft: 5,
+
+  color: "#000",
+  fontSize: "12px",
+  fontWeight: 700,
+  backgroundColor: "transparent",
+  letterSpacing: "0.24px",
+  textTransform: "uppercase",
+
+  "@media screen and (max-width: 767px)": {
+    marginRight: 10,
   },
 }));
 const StyledBalanceInput = styled.input({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
+  cursor: "pointer",
 
-  width: "105px",
+  width: "70px",
   height: "44px",
 
   border: "2px solid white",
   borderRadius: "22px 0px 0px 22px",
-  padding: "0px 17px 0px 3px",
 
   backgroundColor: "transparent",
   borderRight: "none",
@@ -163,7 +189,7 @@ const StyledCalculateWrap = styled.div(() => ({
     height: "40px",
   },
   "@media screen and (min-width: 1280px)": {
-    width: "84px",
+    width: "70px",
   },
 }));
 
@@ -177,4 +203,5 @@ export {
   StyledTransactionWraper,
   StyledButtonWraper,
   StyledInputBalanceWrap,
+  StyledBalanceSpan,
 };

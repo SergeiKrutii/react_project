@@ -11,6 +11,11 @@ const StyledReportLink = styled(NavLink)(({ props }) => ({
   lineHeight: "14px",
   textAlign: "right",
   letterSpacing: "0.04em",
+
+  "&.disabled": {
+    // cursor: "not-allowed",
+    pointerEvents: "none",
+  },
 }));
 
 const StyledSpan = styled.span((props) => ({

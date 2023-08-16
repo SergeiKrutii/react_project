@@ -9,6 +9,7 @@ import transactionSelectors from "redux/transactions/transactionsSelectors";
 
 const AddExpenceView = () => {
   const { data, isSuccess } = useExpenseCategoryQuery();
+
   const [addExpense] = useAddExpenseMutation();
   const navigate = useNavigate();
 

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isTokenRefreshed: false,
-  userData: { email: null, balance: null, id: null, transactions: [] },
+  userData: { email: null, balance: 0, id: null, transactions: [] },
   isLoggedIn: false,
   sessionId: null,
   token: null,
@@ -42,6 +42,9 @@ const authSlice = createSlice({
       state.userData.transactions = payload.transactions;
       state.isLoggedIn = true;
     },
+    setBalance: (state, { payload }) => {
+      state.userData.balance = payload.newBalance;
+    },
   },
 });
 
@@ -51,6 +54,7 @@ export const {
   setLogout,
   setRefresh,
   setUser,
+  setBalance,
 } = authSlice.actions;
 
 export default authSlice.reducer;

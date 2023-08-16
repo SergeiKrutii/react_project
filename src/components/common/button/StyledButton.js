@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SyledButton = styled.button((props) => ({
+export const SyledButton = styled.button(({ children }) => ({
   width: "125px",
   padding: "12px 34px",
   display: "flex",
@@ -11,8 +11,14 @@ export const SyledButton = styled.button((props) => ({
   border: "none",
 
   borderRadius: "16px",
-  backgroundColor: "var(--main-bg-color)",
-  color: "var(--secondary-color)",
+  backgroundColor:
+    children === "ВВОД"
+      ? "var(--main-bg-button-color)"
+      : "var(--main-bg-color)",
+  color:
+    children === "ВВОД"
+      ? "var(--hover-button-color)"
+      : "var(--secondary-color)",
 
   fontSize: "12px",
   letterSpacing: "0.24px",
@@ -25,6 +31,6 @@ export const SyledButton = styled.button((props) => ({
 
   "&:hover, &:focus": {
     color: "var(--hover-button-color)",
-    backgroundColor: "var(--main-bg-button-color)",
+    backgroundColor: "var(--main-bg-button-hover)",
   },
 }));

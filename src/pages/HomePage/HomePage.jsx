@@ -17,8 +17,8 @@ import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
 import { useEffect, useState } from "react";
 
-import AddIncomeView from "pages/AddExpencePage/AddExpencePage";
-import AddExpenseView from "pages/AddIncomePage/AddIncomePage";
+import AddIncomeView from "pages/AddIncomePage/AddIncomePage";
+import AddExpenseView from "pages/AddExpencePage/AddExpencePage";
 
 import { useMatchMedia } from "helpers/mediaQuery";
 import { useLocation } from "react-router-dom";
@@ -29,36 +29,43 @@ import {
 } from "redux/transactions/transactionsApiSlice";
 
 const HomeView = (props) => {
-  const [userDataChoice, setUserDataChoice] = useState("");
-  const { isDesktop, isTablet, isMobile } = useMatchMedia();
-
   const location = useLocation();
   const token = useSelector(authSelectors.selectToken);
+  const balance = useSelector(authSelectors.selectBalance);
   const sessionId = useSelector(authSelectors.selectSid);
+
+  const [userDataChoice, setUserDataChoice] = useState("");
+  const [refresh] = useRefreshMutation();
+  const { isDesktop, isTablet, isMobile } = useMatchMedia();
+
   const { data, isError: userError } = useGetUserQuery(undefined, {
     skip: !token,
     refetchOnMountOrArgChange: true,
   });
-  const [refresh] = useRefreshMutation();
+
   const { data: expense, isError: expenceError } = useGetExpenseQuery();
   const { data: income, isError: incomeError } = useGetIncomeQuery();
-  useEffect(() => {
-    if (userError || expenceError || incomeError) refresh(sessionId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [expenceError, incomeError, refresh, userError]);
 
-  /////////////////////////////////////////////////////////
+  let sortedExpense = expense?.expenses.filter(
+    (transaction) => transaction.date === userDataChoice
+  );
 
+  let sortedIncome = income?.incomes.filter(
+    (transaction) => transaction.date === userDataChoice
+  );
   const sortedDataMobTransactions = data?.transactions.filter(
     (transaction) => transaction.date === userDataChoice
   );
 
-  const sortedExpense = expense?.expenses.filter(
-    (transaction) => transaction.date === userDataChoice
-  );
-  const sortedIncome = income?.incomes.filter(
-    (transaction) => transaction.date === userDataChoice
-  );
+  const shuldRefresh = userError && expenceError && incomeError;
+
+  useEffect(() => {
+    if (!shuldRefresh) refresh(sessionId);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [expenceError, incomeError, refresh, userError]);
+
+  /////////////////////////////////////////////////////////
 
   let deviseSize = isTablet || isDesktop;
 
@@ -71,7 +78,7 @@ const HomeView = (props) => {
         <StyledHomePageWraper>
           <StyledHomeView>
             <ReportLink />
-            <BalanceComponent userBalance={data?.balance} />
+            <BalanceComponent userBalance={balance} />
             {data?.balance === 0 && <PopUp />}
           </StyledHomeView>
           <CalendarComponent onUserData={setUserDataChoice} />
@@ -83,7 +90,7 @@ const HomeView = (props) => {
         <StyledTabletDiv>
           <StyledHomeView>
             <ReportLink />
-            <BalanceComponent userBalance={data?.balance} />
+            <BalanceComponent userBalance={balance} />
             {data?.balance === 0 && <PopUp />}
           </StyledHomeView>
           <StyledDiv>

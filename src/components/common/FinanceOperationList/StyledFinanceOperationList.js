@@ -67,7 +67,7 @@ const StyledFinanceTitle = styled.h2(() => ({
     color: "var(--secondary-color)",
   },
   "@media screen and (min-width: 1280px)": {
-    marginRight: "95px",
+    marginRight: "115px",
   },
 }));
 const StyledFinanceInfo = styled.p(() => ({
@@ -99,7 +99,7 @@ const StyledFinanceInfo = styled.p(() => ({
   },
 
   "@media screen and (min-width: 1280px)": {
-    marginRight: "158px",
+    marginRight: "170px",
 
     color: "var(--secondary-color)",
     "&:last-child": {
@@ -113,7 +113,7 @@ const StyledFinanceInfoWraper = styled.div(() => ({
   display: "flex",
 
   "@media screen and (min-width: 768px)": {
-    marginRight: "42px",
+    marginRight: "20px",
   },
 }));
 
@@ -130,10 +130,11 @@ const StyledFinanceSumm = styled.span(({ transactionType }) => ({
 
   "@media screen and (min-width: 768px)": {
     marginRight: "40px",
-    width: "70px",
+    width: "92px",
   },
   "@media screen and (min-width: 1280px)": {
-    marginRight: "60px",
+    marginRight: "30px",
+    marginLeft: "30px",
   },
 }));
 const StyledFinanceButton = styled.button(() => ({
@@ -141,6 +142,12 @@ const StyledFinanceButton = styled.button(() => ({
   border: "none",
   marginRight: "10px",
   padding: "0",
+  cursor: "pointer",
+
+  "&:hover": {
+    fill: "red",
+    stroke: "red",
+  },
 }));
 
 const StyledFinanceDiv = styled.div(() => ({
@@ -161,11 +168,11 @@ const StyledHeaderList = styled.div(() => ({
   "@media screen and (min-width: 768px)": {
     maxWidth: "604px",
     // padding: "0px 136px 0px 20px",
-    paddingRight: "136px",
+    paddingRight: "84px",
     paddingLeft: "20px",
   },
   "@media screen and (min-width: 1280px)": {
-    width: "604px",
+    maxWidth: "660px",
     // // padding: "0px 136px 0px 20px",
     // paddingRight: "136px",
     // paddingLeft: "20px",
