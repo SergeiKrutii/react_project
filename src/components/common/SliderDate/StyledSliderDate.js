@@ -15,6 +15,7 @@ export const StyledSliderBox = styled.div(() => ({
   width: 148,
   display: "flex",
   justifyContent: "center",
+  alignItems: "center",
   height: 20,
   margin: "auto",
   marginTop: 5,
@@ -43,8 +44,6 @@ export const StyledSliderButton = styled.button(() => ({
 }));
 
 export const StyledSliderDateText = styled.p(() => ({
-  // display: "flex",
-
   width: 110,
   fontSize: 14,
   fontWeight: 700,
@@ -53,8 +52,5 @@ export const StyledSliderDateText = styled.p(() => ({
   marginLeft: 10,
   marginRight: 10,
   textTransform: "uppercase",
-  // alignItems: "center",
   textAlign: "center",
-
-  // justifyContent: "center",
 }));

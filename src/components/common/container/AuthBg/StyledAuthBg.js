@@ -14,6 +14,7 @@ export const StyledAuthBg = styled.div(() => ({
 
   "@media(min-width: 1280px)": {
     height: 794,
+    overflowX: "hidden",
   },
 }));
 

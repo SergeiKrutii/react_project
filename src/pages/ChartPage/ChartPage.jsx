@@ -90,16 +90,21 @@ const ChartPage = () => {
         <>
           <StyledCharHeader>
             <StyledChartBackBlock>
-              <StyledButton type="button" onClick={handleGoBack}>
+              <StyledButton
+                style={{ display: "flex", alignItems: "center" }}
+                type="button"
+                onClick={handleGoBack}
+              >
                 <SpriteIcon
                   name={"icon-goback-button"}
                   style={{ width: "24px", height: "24px" }}
                 />
-                {/* {!isMobile && <StyledChartBackText>Вернуться на главную</StyledChartBackText>} */}
+                {!isMobile && (
+                  <StyledChartBackText>
+                    Вернуться на главную
+                  </StyledChartBackText>
+                )}
               </StyledButton>
-              {!isMobile && (
-                <StyledChartBackText>Вернуться на главную</StyledChartBackText>
-              )}
             </StyledChartBackBlock>
             <ChartBalance />
             <SliderDate periodDate={periodDate} />

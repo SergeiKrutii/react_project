@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledTotalBox = styled.div({
   display: "flex",
-  // justifyContent: "space-between",
   justifyContent: "center",
   alignItems: "center",
 
@@ -56,6 +55,10 @@ export const StyledDocorationBorder = styled.span({
   height: 70,
   marginLeft: 30,
   marginRight: 30,
+
+  "@media(min-width: 768px)": {
+    height: 36,
+  },
 });
 
 export const StyledIncomeBlock = styled.div({

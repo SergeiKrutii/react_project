@@ -108,6 +108,7 @@ const StyledGoogleBtn = styled.button(() => ({
   letterSpacing: 0.2,
   color: "var(--primary-color)",
   paddingTop: 9,
+  cursor: "pointer",
 }));
 
 const StyledGoogleIcon = styled.img(() => ({
