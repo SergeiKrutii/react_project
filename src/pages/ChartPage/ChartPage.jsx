@@ -1,20 +1,14 @@
 import { useState } from "react";
-
 import { usePeriodDataMutation } from "redux/transactions/transactionsApiSlice";
-import { setArrayDataCategory } from "redux/transactions/transactionsSlice";
-
-import { useDispatch } from "react-redux";
-
 import SpriteIcon from "components/common/spriteIcon/SpriteIcon";
 import { StyledButton } from "components/TransactionAdd/StyledTransactionAdd";
 import { useMatchMedia } from "helpers/mediaQuery";
 import { useNavigate } from "react-router-dom";
-
 import SliderDate from "components/common/SliderDate/SliderDate";
 import ChartBalance from "components/common/ChartBalance/ChartBalance";
 import IncomeExpenseTotal from "components/common/IncomeExpenseTotal/IncomeExpenseTotal";
 import ChartCategory from "components/common/ChartCategory/ChartCategory";
-
+import Chart from "components/Chart/Chart";
 import {
   StyledCharHeader,
   StyledChartBackText,
@@ -26,7 +20,6 @@ const ChartPage = () => {
   const { isMobile } = useMatchMedia();
   const navigate = useNavigate();
   const [periodDate, { data: periodData }] = usePeriodDataMutation();
-  const dispatch = useDispatch();
 
   const [typeOfTransactions, setTypeOfTransactions] = useState("Расходы");
   const [typeOfCategory, setTypeOfCategory] = useState("");
@@ -42,16 +35,10 @@ const ChartPage = () => {
   const arrayTransactionsMonth = arrayForMarkup
     ? Object.entries(arrayForMarkup)
     : [];
-  console.log("arrayTransactionsMonth", arrayTransactionsMonth);
 
-  const findActiveCategory = arrayTransactionsMonth.find(
+  const findActiveCategory = arrayTransactionsMonth?.find(
     (item) => item[0] === typeOfCategory
   );
-  console.log("findActiveCategory", findActiveCategory);
-
-  if (findActiveCategory) {
-    dispatch(setArrayDataCategory(findActiveCategory));
-  }
 
   const handleChangeCategory = () => {
     setTypeOfTransactions((prevType) =>
@@ -67,7 +54,7 @@ const ChartPage = () => {
     navigate("/home");
   };
 
-  return (
+return (
     <StyledChartContainer>
       {isMobile ? (
         // Мобильный макет

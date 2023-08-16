@@ -5,6 +5,7 @@ import {
   setRefresh,
   setUser,
   setIsrefreshToken,
+  setBalance,
 } from "./authSlice";
 
 import { toast } from "react-toastify";
@@ -64,7 +65,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: "/auth/refresh",
         method: "POST",
         body: { sid: sessionId },
-        // headers: { refreshToken: refToken },
       }),
 
       async onQueryStarted(_, { getState, dispatch, queryFulfilled }) {
@@ -105,6 +105,14 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "PATCH",
         body: newBalance,
       }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setBalance(data));
+        } catch (err) {
+          console.log(err);
+        }
+      },
     }),
   }),
 });

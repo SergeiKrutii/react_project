@@ -1,20 +1,16 @@
 import SpriteIcon from "../spriteIcon/SpriteIcon";
-import { useEffect, useRef, useState } from "react";
-import Calendar from "react-calendar";
+import { useEffect, useState } from "react";
 import "react-calendar/dist/Calendar.css";
+import Calendar from "react-calendar";
 import {
   StyledCalendarComponent,
   StyledCalendar,
   StyledDate,
 } from "./StyledCalendar";
-import { usePeriodDataQuery } from "redux/transactions/transactionsApiSlice";
 
 const CalendarComponent = ({ onUserData }) => {
   const [onShow, setOnShow] = useState(false);
   const [value, setValue] = useState(new Date());
-
-  // const currentDate = useRef(formatDate(value));
-  // console.log("🚀 ~ currentDate:", currentDate.current);
 
   useEffect(() => {
     onUserData(transactionDate(value));
@@ -60,13 +56,16 @@ const CalendarComponent = ({ onUserData }) => {
         ></SpriteIcon>
         <StyledDate>{formatDate(value)}</StyledDate>
       </StyledCalendar>
+
       {onShow && (
-        <StyledCalendarComponent
-          style={{ width: "100px", position: "absolite" }}
-          onClickDay={onChangeDate}
-          onChange={onChangeDate}
-          value={value}
-        />
+        <StyledCalendarComponent>
+          <Calendar
+            style={{ width: "100px" }}
+            onClickDay={onChangeDate}
+            onChange={onChangeDate}
+            value={value}
+          />
+        </StyledCalendarComponent>
       )}
     </div>
   );

@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const StyledCalendar = styled.div(() => ({
   display: "flex",
+  cursor: "pointer",
   justifyContent: "center",
   alignItems: "center",
-
   width: "104px",
-  height: "40px",
   marginTop: "40px",
   marginBottom: "42px",
 
@@ -16,10 +16,12 @@ const StyledCalendar = styled.div(() => ({
     marginBottom: 0,
     marginRight: "33px",
     height: "47px",
+    justifyContent: "start",
   },
 }));
 
-const StyledCalendarComponent = styled(Calendar)`
+const StyledCalendarComponent = styled.div`
+  position: absolute;
   @media screen and (max-width: 767px) {
     top: 75px;
     position: absolute;
@@ -35,6 +37,7 @@ const StyledCalendarComponent = styled(Calendar)`
 `;
 
 const StyledDate = styled.span(() => ({
+  marginTop: 3,
   color: "var(--secondary-color)",
   fontSize: "12px",
   fontWeight: 900,

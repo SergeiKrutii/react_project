@@ -10,6 +10,7 @@ import {
   StyledTransactionWraper,
   StyledButtonWraper,
   StyledInputBalanceWrap,
+  StyledBalanceSpan,
 } from "./StyledTransactionAdd";
 import SpriteIcon from "components/common/spriteIcon/SpriteIcon";
 import Button from "components/common/button/Button";
@@ -27,7 +28,7 @@ const TransactionAdd = ({
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
-  const { isDesktop, isTablet, isMobile } = useMatchMedia();
+  const { isTablet, isMobile } = useMatchMedia();
 
   const date = new Date();
 
@@ -109,14 +110,14 @@ const TransactionAdd = ({
             ))}
         </StyledSelect>
         <StyledInputBalanceWrap>
-          {/* <div> */}
           <StyledBalanceInput
-            type="number"
-            placeholder={isMobile ? "00.00 UAH" : "00.00"}
+            type="text"
+            placeholder={isMobile ? "00.00" : "00.00"}
             value={incomeAmount}
             onChange={handleBalanceChange}
           />
-          {/* </div> */}
+          {!isTablet && <StyledBalanceSpan> UAH</StyledBalanceSpan>}
+
           <StyledCalculateWrap>
             <SpriteIcon
               name={"icon-calculator"}
