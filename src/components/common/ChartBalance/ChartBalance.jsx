@@ -39,9 +39,10 @@ const ChartBalance = () => {
           type="text"
           placeholder={placeholderText}
           onChange={(e) => setBalance(e.currentTarget.value)}
+          disabled={!isEmptyBalance}
         />
         {isDesktop && (
-          <StyledChartButtonForm type="submit" disabled={isEmptyBalance}>
+          <StyledChartButtonForm type="submit" disabled={!isEmptyBalance}>
             ПОДТВЕРДИТЬ
           </StyledChartButtonForm>
         )}

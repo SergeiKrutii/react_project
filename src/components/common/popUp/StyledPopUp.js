@@ -14,11 +14,11 @@ const StyledPopUp = styled.div((prop) => ({
 
   "@media screen and (min-width: 320px) and (max-width: 767px)": {
     top: 165,
-    left: -6,
+    left: -10,
   },
   "@media screen and (min-width: 768px) and (max-width: 1279px)": {
-    top: 45,
-    left: 169,
+    top: 40,
+    left: 172,
   },
   "@media screen and (min-width: 1280px)": {
     top: 85,

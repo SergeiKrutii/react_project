@@ -19,14 +19,14 @@ import { useDeleteTransactionMutation } from "redux/transactions/transactionsApi
 import { Fragment } from "react";
 import { useMatchMedia } from "helpers/mediaQuery";
 
-const FinanceOperationList = ({ transactions }) => {
+const FinanceOperationList = ({ transactions = [] }) => {
   const [deleteTransaction] = useDeleteTransactionMutation();
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
   let deviseSize = isTablet || isDesktop;
-  const emptyCount = 9;
+  const emptyCount = 7;
 
   return (
-    <div>
+    <div style={{ marginTop: isMobile ? "20px" : "" }}>
       {deviseSize && (
         <StyledHeaderList>
           <StyledHeaderListItem>ДАТА</StyledHeaderListItem>

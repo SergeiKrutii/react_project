@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   --transparent-color: rgba(82, 85, 95, 0.7);
   --category-placeholder-color: #c7ccdc;
   --main-bg-button-color: #ff751d;
+  --main-bg-button-hover: #F94700;
   --graph-bg-color: #ffdac0;
   --hover-button-color: #ffffff;
   --main-bg-color: #f5f6fb;
