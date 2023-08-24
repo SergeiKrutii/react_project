@@ -50,7 +50,9 @@ const App = () => {
         theme="dark"
       />
       <GlobalStyle />
-      <Header toggleModal={toggleModal} />
+      <Suspense fallback={<Loader />}>
+        <Header toggleModal={toggleModal} />
+      </Suspense>
       <Container>
         <Suspense fallback={<Loader />}>
           {showModal && (

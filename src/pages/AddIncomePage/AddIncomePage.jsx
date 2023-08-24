@@ -7,10 +7,12 @@ import {
   useIncomeCategoryQuery,
   useAddIncomeMutation,
 } from "redux/transactions/transactionsApiSlice";
+import { useTranslation } from "react-i18next";
 
 const AddIncomeView = (props) => {
   const { data, isSuccess } = useIncomeCategoryQuery();
   const [addIncome] = useAddIncomeMutation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { isTablet, isMobile } = useMatchMedia();
   const handleConfirmIncome = async (income) => {
@@ -30,8 +32,8 @@ const AddIncomeView = (props) => {
   return (
     <>
       <TransactionAdd
-        descriptionTitle={"Описание"}
-        categoryTitle={"Категория"}
+        descriptionTitle={t("productDescription.income")}
+        categoryTitle={t("categoryTitle.categoryIncomes")}
         categoryes={data}
         onAddTransaction={handleConfirmIncome}
       />

@@ -20,6 +20,7 @@ ChartJS.register(
 );
 
 const Chart = ({ chartData = {} }) => {
+  console.log("🚀 ~ chartData:", chartData);
   const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
   const deviseSize = isTablet || isDesktop;

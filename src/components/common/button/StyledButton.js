@@ -11,14 +11,12 @@ export const SyledButton = styled.button(({ children }) => ({
   border: "none",
 
   borderRadius: "16px",
-  backgroundColor:
-    children === "ВВОД"
-      ? "var(--main-bg-button-color)"
-      : "var(--main-bg-color)",
-  color:
-    children === "ВВОД"
-      ? "var(--hover-button-color)"
-      : "var(--secondary-color)",
+  backgroundColor: ["ВВОД", "ВВЕСТИ", "ENTER"].includes(children)
+    ? "var(--main-bg-button-color)"
+    : "var(--main-bg-color)",
+  color: ["ВВОД", "ВВЕСТИ", "ENTER"].includes(children)
+    ? "var(--hover-button-color)"
+    : "var(--secondary-color)",
 
   fontSize: "12px",
   letterSpacing: "0.24px",

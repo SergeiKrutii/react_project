@@ -1,0 +1,33 @@
+{
+  "exit": "Выйти",
+
+  "balanceComponent": {
+    "balance": "Баланс:",
+    "button": "Подтвердить"
+  },
+
+  "reportLink": {
+    "report": "Перейти к отчетам"
+  },
+  "button": {
+    "enterButton": "ВВОД",
+    "clearButton": "Очистить"
+  },
+  "expense": "РАСХОД",
+  "income": "ДОХОД",
+  "productDescription": {
+    "expense": "Описание товара",
+    "income": "Описание"
+  },
+  "categoryTitle": {
+    "categoryExpense": "Категория товаров",
+    "categoryIncomes": "Категория"
+  },
+  "transactionHeader": {
+    "date": "ДАТА",
+    "description": "ОПИСАНИЕ",
+    "category": "КАТЕГОРИЯ",
+    "sum": "СУММА"
+  },
+  "summary": "Сводка"
+}

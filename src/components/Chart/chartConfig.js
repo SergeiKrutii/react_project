@@ -72,13 +72,13 @@ export function tabletChart(data) {
             ticks: {
               autoSkip: false,
               maxRotation: 0,
-
               maxTicksLimit: 10,
             },
           },
 
           y: {
             grid: {
+              drawTicks: false,
               lineWidth: 1,
               borderColor: "transparent",
             },

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header(() => ({
+  position: "relative",
   "@media screen  and (min-width: 1280px)": {
     maxWidth: 1280,
     margin: "auto",

@@ -1,0 +1,33 @@
+{
+  "exit": "Вийти",
+
+  "balanceComponent": {
+    "balance": "Баланс",
+    "button": "Підтвердити"
+  },
+
+  "reportLink": {
+    "report": "Перейти до звітів"
+  },
+  "button": {
+    "enterButton": "ВВЕСТИ",
+    "clearButton": "Очистити"
+  },
+  "expense": "ВИТРАТИ",
+  "income": "ДОХІД",
+  "productDescription": {
+    "expense": "Опис товару",
+    "income": "Опис"
+  },
+  "categoryTitle": {
+    "categoryExpense": "Категорія товарів",
+    "categoryIncomes": "Категорія"
+  },
+  "transactionHeader": {
+    "date": "ДАТА",
+    "description": "ОПИС",
+    "category": "КАТЕГОРІЯ",
+    "sum": "СУМА"
+  },
+  "summary": "Сумарно"
+}

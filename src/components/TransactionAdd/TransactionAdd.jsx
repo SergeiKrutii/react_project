@@ -16,6 +16,7 @@ import SpriteIcon from "components/common/spriteIcon/SpriteIcon";
 import Button from "components/common/button/Button";
 import { useNavigate } from "react-router-dom";
 import { useMatchMedia } from "helpers/mediaQuery";
+import { useTranslation } from "react-i18next";
 
 const TransactionAdd = ({
   descriptionTitle,
@@ -27,6 +28,7 @@ const TransactionAdd = ({
   const [incomeAmount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const { isTablet, isMobile } = useMatchMedia();
 
@@ -132,7 +134,7 @@ const TransactionAdd = ({
       </StyledForm>
       <StyledButtonWraper>
         <Button
-          btnText="ВВОД"
+          btnText={t("button.enterButton")}
           btnAction={() => {
             onAddTransaction(newTransaction);
             handleReset();
@@ -140,7 +142,7 @@ const TransactionAdd = ({
         />
         <Button
           style={{ marginLeft: "15px" }}
-          btnText="ОЧИСТИТЬ"
+          btnText={t("button.clearButton")}
           btnAction={handleReset}
         />
       </StyledButtonWraper>

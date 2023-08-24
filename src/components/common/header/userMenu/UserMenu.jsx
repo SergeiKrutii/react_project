@@ -11,12 +11,13 @@ import {
 } from "./StyledUserMenu";
 
 import IconLogout from "../../../images/logout.svg";
-
+import { useTranslation } from "react-i18next";
 import Avatar from "@mui/material/Avatar";
 
 const UserMenu = ({ toggleModal }) => {
   const email = useSelector(authSelectors.selectEmail);
   const isLoggedIn = useSelector(authSelectors.selectEmail);
+  const { t } = useTranslation();
 
   return (
     <StyledUserMenu>
@@ -32,7 +33,7 @@ const UserMenu = ({ toggleModal }) => {
         <img src={IconLogout} width="16" height="16" alt="Logout" />
       </StyledMobileLogOut>
 
-      <StyledLogOut onClick={toggleModal}>Выйти</StyledLogOut>
+      <StyledLogOut onClick={toggleModal}>{t("exit")}</StyledLogOut>
     </StyledUserMenu>
   );
 };

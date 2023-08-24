@@ -6,10 +6,11 @@ import {
 } from "redux/transactions/transactionsApiSlice";
 import { useNavigate } from "react-router-dom";
 import transactionSelectors from "redux/transactions/transactionsSelectors";
+import { useTranslation } from "react-i18next";
 
 const AddExpenceView = () => {
   const { data, isSuccess } = useExpenseCategoryQuery();
-
+  const { t } = useTranslation();
   const [addExpense] = useAddExpenseMutation();
   const navigate = useNavigate();
 
@@ -27,8 +28,8 @@ const AddExpenceView = () => {
   return (
     <>
       <TransactionAdd
-        descriptionTitle={"Описание товара"}
-        categoryTitle={"Категория товаров"}
+        descriptionTitle={t("productDescription.expense")}
+        categoryTitle={t("categoryTitle.categoryExpense")}
         categoryes={data}
         onAddTransaction={handleConfirmExpense}
       />

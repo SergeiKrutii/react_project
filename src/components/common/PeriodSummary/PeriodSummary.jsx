@@ -7,8 +7,10 @@ import {
   StyledSum,
 } from "./StyledPeriodSummary";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const PeriodSummary = ({ incomes, expenses }) => {
+  const { t } = useTranslation();
   const location = useLocation();
   if (incomes === undefined) return;
   if (expenses === undefined) return;
@@ -33,7 +35,7 @@ const PeriodSummary = ({ incomes, expenses }) => {
 
   return (
     <StyledSummaryBox>
-      <StyledSummaryTitle>Значение</StyledSummaryTitle>
+      <StyledSummaryTitle>{t("summary")}</StyledSummaryTitle>
       <StyledSummaryList>{markup}</StyledSummaryList>
     </StyledSummaryBox>
   );
