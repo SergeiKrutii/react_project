@@ -1,0 +1,34 @@
+{
+  "exit": "Exit",
+
+  "balanceComponent": {
+    "balance": "Balance:",
+    "button": "Confirm"
+  },
+
+  "reportLink": {
+    "report": "Go to reports"
+  },
+  "button": {
+    "enterButton": "ENTER",
+    "clearButton": "Clear"
+  },
+  "expense": "EXPENSE",
+  "income": "INCOMES",
+  "productDescription": {
+    "expense": "Product description",
+    "income": "Description"
+  },
+
+  "categoryTitle": {
+    "categoryExpense": "Product category",
+    "categoryIncomes": "Category"
+  },
+  "transactionHeader": {
+    "date": "DATE",
+    "description": "Description",
+    "category": "CATEGORY",
+    "sum": "SUM"
+  },
+  "summary": "Summary"
+}

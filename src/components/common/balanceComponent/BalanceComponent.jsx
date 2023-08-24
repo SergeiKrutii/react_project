@@ -11,12 +11,15 @@ import {
   StyledButtonForm,
   StyledBalanceSpan,
 } from "components/common/balanceComponent/StyledBalanceComponent";
+
 import { useSetUserBalanceMutation } from "redux/auth/authApiSlice";
+import { useTranslation } from "react-i18next";
 
 const BalanceComponent = ({ userBalance = "" }) => {
   const [balance, setBalance] = useState({ value: 0, currency: "UAH" });
   const [setUserBalance] = useSetUserBalanceMutation();
   const stateBalance = useSelector(authSelectors.selectBalance);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setBalance({ ...balance, value: userBalance });
@@ -37,7 +40,7 @@ const BalanceComponent = ({ userBalance = "" }) => {
   const placeholderText = isEmptyBalance ? "00.00" : `${balance.value}`;
   return (
     <StyledBalanceComponent>
-      <StyledParagraph>Баланс:</StyledParagraph>
+      <StyledParagraph>{t("balanceComponent.balance")}</StyledParagraph>
       <StyledBalanceForm onSubmit={handleSetNewBalance}>
         <StyledBalanceDiv>
           <StyledBalanceInput
@@ -50,7 +53,7 @@ const BalanceComponent = ({ userBalance = "" }) => {
         </StyledBalanceDiv>
 
         <StyledButtonForm type="submit" disabled={!isEmptyBalance}>
-          ПОДТВЕРДИТЬ
+          {t("balanceComponent.button")}
         </StyledButtonForm>
       </StyledBalanceForm>
     </StyledBalanceComponent>

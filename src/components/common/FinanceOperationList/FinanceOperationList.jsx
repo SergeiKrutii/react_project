@@ -18,10 +18,12 @@ import {
 import { useDeleteTransactionMutation } from "redux/transactions/transactionsApiSlice";
 import { Fragment } from "react";
 import { useMatchMedia } from "helpers/mediaQuery";
+import { useTranslation } from "react-i18next";
 
 const FinanceOperationList = ({ transactions = [] }) => {
   const [deleteTransaction] = useDeleteTransactionMutation();
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
+  const { t } = useTranslation();
   let deviseSize = isTablet || isDesktop;
   const emptyCount = 7;
 
@@ -29,10 +31,18 @@ const FinanceOperationList = ({ transactions = [] }) => {
     <div style={{ marginTop: isMobile ? "20px" : "" }}>
       {deviseSize && (
         <StyledHeaderList>
-          <StyledHeaderListItem>ДАТА</StyledHeaderListItem>
-          <StyledHeaderListItem>ОПИСАНИЕ</StyledHeaderListItem>
-          <StyledHeaderListItem>КАТЕГОРИЯ</StyledHeaderListItem>
-          <StyledHeaderListItem>СУММА</StyledHeaderListItem>
+          <StyledHeaderListItem>
+            {t("transactionHeader.date")}
+          </StyledHeaderListItem>
+          <StyledHeaderListItem>
+            {t("transactionHeader.description")}
+          </StyledHeaderListItem>
+          <StyledHeaderListItem>
+            {t("transactionHeader.category")}
+          </StyledHeaderListItem>
+          <StyledHeaderListItem>
+            {t("transactionHeader.sum")}
+          </StyledHeaderListItem>
         </StyledHeaderList>
       )}
       <StyledFinanceOperationList>

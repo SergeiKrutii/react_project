@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/authSelectors";
 import { NavLink } from "react-router-dom";
 import { useMatchMedia } from "helpers/mediaQuery";
+import LanguageSwitcher from "components/LanguageSwitcher/LanguageSwitcher";
 
 import logoMob from "components/images/mobile_logo.svg";
 import { StyledHeader, StyledHeaderBox, StyledAuth } from "./StyledHeader";
@@ -15,6 +16,7 @@ const Header = ({ toggleModal }) => {
   return (
     <StyledHeader>
       <StyledHeaderBox>
+        <LanguageSwitcher />
         <NavLink to={isMobile ? "/home" : "/home/expense"}>
           <img src={logoMob} alt="logo" />
         </NavLink>

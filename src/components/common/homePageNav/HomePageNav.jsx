@@ -4,17 +4,19 @@ import {
   StyledMobNavLink,
   StyledTabNavLink,
 } from "./StyledHomePageNav";
+import { useTranslation } from "react-i18next";
 
 const HomePageNav = () => {
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
   let deviseSize = isTablet || isDesktop;
+  const { t } = useTranslation();
 
   return (
     <>
       {isMobile && (
         <StyledHomePageNav>
-          <StyledMobNavLink to={"/expense"}>РАСХОД</StyledMobNavLink>
-          <StyledMobNavLink to={"/income"}>ДОХОД</StyledMobNavLink>
+          <StyledMobNavLink to={"/expense"}>{t("expense")}</StyledMobNavLink>
+          <StyledMobNavLink to={"/income"}>{t("income")}</StyledMobNavLink>
         </StyledHomePageNav>
       )}
 
@@ -24,13 +26,13 @@ const HomePageNav = () => {
             to={"expense"}
             className={(navData) => (navData.isActive ? "active" : "link")}
           >
-            РАСХОД
+            {t("expense")}
           </StyledTabNavLink>
           <StyledTabNavLink
             to={"income"}
             className={(navData) => (navData.isActive ? "active" : "link")}
           >
-            ДОХОД
+            {t("income")}
           </StyledTabNavLink>
         </StyledHomePageNav>
       )}
