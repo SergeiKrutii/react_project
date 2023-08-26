@@ -84,7 +84,7 @@ const StyledTabNavLink = styled(NavLink)(() => ({
   },
 
   "&.active": {
-    backgroundColor: "#fff",
+    backgroundColor: "var(--hover-button-color)",
     color: "var(--main-bg-button-color)",
   },
 }));

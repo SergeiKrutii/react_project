@@ -39,7 +39,7 @@ const StyledOperationWraper = styled.div(() => ({
 }));
 
 const StyledDiv = styled.div`
-  background-color: #fff;
+  background-color: var(--hover-button-color);
   height: 546px;
   padding: 30px 30px 50px 30px;
   border-radius: 0px 30px 30px 30px;
