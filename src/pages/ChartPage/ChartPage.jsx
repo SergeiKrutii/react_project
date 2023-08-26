@@ -5,7 +5,8 @@ import { StyledButton } from "components/TransactionAdd/StyledTransactionAdd";
 import { useMatchMedia } from "helpers/mediaQuery";
 import { useNavigate } from "react-router-dom";
 import SliderDate from "components/common/SliderDate/SliderDate";
-import ChartBalance from "components/common/ChartBalance/ChartBalance";
+import BalanceComponent from "components/common/balanceComponent/BalanceComponent";
+// import ChartBalance from "components/common/ChartBalance/ChartBalance";
 import IncomeExpenseTotal from "components/common/IncomeExpenseTotal/IncomeExpenseTotal";
 import ChartCategory from "components/common/ChartCategory/ChartCategory";
 import Chart from "components/Chart/Chart";
@@ -67,7 +68,8 @@ const ChartPage = () => {
               />
             </StyledButton>
             <SliderDate periodDate={periodDate} />
-            <ChartBalance />
+            {/* <ChartBalance /> */}
+            <BalanceComponent />
             <IncomeExpenseTotal
               expenseMonth={expenseMonth}
               incomeMonth={incomeMonth}
@@ -94,7 +96,8 @@ const ChartPage = () => {
                   )}
                 </StyledButton>
               </StyledChartBackBlock>
-              <ChartBalance />
+              {/* <ChartBalance /> */}
+              <BalanceComponent />
               <SliderDate periodDate={periodDate} />
             </StyledCharHeader>
             <IncomeExpenseTotal

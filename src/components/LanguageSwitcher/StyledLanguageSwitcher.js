@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const SwitcherWraper = styled.div`
-  position: absolute;
+  // position: absolute;
   display: flex;
   align-items: center;
   /* min-height: 24px; */

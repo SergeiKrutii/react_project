@@ -7,10 +7,11 @@ export const StyledChartContainer = styled.div(() => ({
   },
 }));
 
-export const StyledCharHeader = styled.div({
+export const StyledCharHeader = styled.div((isEmptyStyledChart) => ({
   display: "flex",
+  justifyContent: `${isEmptyStyledChart ? "space-between" : null}`,
   marginTop: 40,
-});
+}));
 
 export const StyledChartBackText = styled.p({
   color: `var(--transparent-color)`,

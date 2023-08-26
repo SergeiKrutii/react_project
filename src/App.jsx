@@ -1,10 +1,12 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { GlobalStyle } from "GlobalStyle";
-import { lazy, useState, Suspense } from "react";
+import { lazy, useState, Suspense, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useMatchMedia } from "helpers/mediaQuery";
 import { useRefreshMutation, useLogoutMutation } from "redux/auth/authApiSlice";
+
+import { ThemeProvider } from "styled-components";
 
 import Modal from "components/common/Modal/Modal";
 import Container from "components/common/container/Container";
@@ -34,6 +36,17 @@ const App = () => {
     toggleModal();
   };
 
+  const [isDark, setIsDark] = useState(false);
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    setIsDark(savedTheme === "dark");
+  }, []);
+  const toggleTheme = () => {
+    const newTheme = isDark ? "light" : "dark";
+    setIsDark(!isDark);
+    localStorage.setItem("theme", newTheme);
+  };
+
   return (
     <>
       <ToastContainer
@@ -49,70 +62,76 @@ const App = () => {
         pauseOnHover
         theme="dark"
       />
-      <GlobalStyle />
-      <Suspense fallback={<Loader />}>
-        <Header toggleModal={toggleModal} />
-      </Suspense>
-      <Container>
+      <ThemeProvider theme={{ isDark }}>
+        <GlobalStyle isDark={isDark} />
         <Suspense fallback={<Loader />}>
-          {showModal && (
-            <Modal
-              hendelLogOut={hendelLogOut}
-              toggleModal={toggleModal}
-              textModal="Вы действительно хотите выйти?"
-            />
-          )}
-          <Routes>
-            <Route path="/" element={<Navigate to="/auth" />} />
-            <Route element={<PrivateRoute />}>
-              {isMobile ? (
-                //Mobile
-                <>
-                  <Route
-                    path="/home/expense"
-                    element={<Navigate to="/home" />}
-                  />
-                  <Route
-                    path="/home/income"
-                    element={<Navigate to="/home" />}
-                  />
-
-                  <Route path="/home" element={<HomePage />} />
-                  <Route path="/expense" element={<AddExpencePage />} />
-                  <Route path="/income" element={<AddIncomePage />} />
-                  <Route path="/chart" element={<ChartPage />} />
-                </>
-              ) : (
-                //Tablet and Desktop
-                <>
-                  <Route
-                    path="/home"
-                    element={<Navigate to="/home/expense" />}
-                  />
-                  <Route
-                    path="/expense"
-                    element={<Navigate to="/home/expense" />}
-                  />
-                  <Route
-                    path="/income"
-                    element={<Navigate to="/home/expense" />}
-                  />
-
-                  <Route path="/home" element={<HomePage />}>
-                    <Route path="expense" element={<AddExpencePage />} />
-                    <Route path="income" element={<AddIncomePage />} />
-                  </Route>
-                  <Route path="/chart" element={<ChartPage />} />
-                </>
-              )}
-            </Route>
-            <Route element={<PublicRoute />}>
-              <Route path="/auth" element={<AuthPage />} />
-            </Route>
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <Header
+            isOn={isDark}
+            handleToggle={toggleTheme}
+            toggleModal={toggleModal}
+          />
         </Suspense>
-      </Container>
+        <Container>
+          <Suspense fallback={<Loader />}>
+            {showModal && (
+              <Modal
+                hendelLogOut={hendelLogOut}
+                toggleModal={toggleModal}
+                textModal="Вы действительно хотите выйти?"
+              />
+            )}
+            <Routes>
+              <Route path="/" element={<Navigate to="/auth" />} />
+              <Route element={<PrivateRoute />}>
+                {isMobile ? (
+                  //Mobile
+                  <>
+                    <Route
+                      path="/home/expense"
+                      element={<Navigate to="/home" />}
+                    />
+                    <Route
+                      path="/home/income"
+                      element={<Navigate to="/home" />}
+                    />
+
+                    <Route path="/home" element={<HomePage />} />
+                    <Route path="/expense" element={<AddExpencePage />} />
+                    <Route path="/income" element={<AddIncomePage />} />
+                    <Route path="/chart" element={<ChartPage />} />
+                  </>
+                ) : (
+                  //Tablet and Desktop
+                  <>
+                    <Route
+                      path="/home"
+                      element={<Navigate to="/home/expense" />}
+                    />
+                    <Route
+                      path="/expense"
+                      element={<Navigate to="/home/expense" />}
+                    />
+                    <Route
+                      path="/income"
+                      element={<Navigate to="/home/expense" />}
+                    />
+
+                    <Route path="/home" element={<HomePage />}>
+                      <Route path="expense" element={<AddExpencePage />} />
+                      <Route path="income" element={<AddIncomePage />} />
+                    </Route>
+                    <Route path="/chart" element={<ChartPage />} />
+                  </>
+                )}
+              </Route>
+              <Route element={<PublicRoute />}>
+                <Route path="/auth" element={<AuthPage />} />
+              </Route>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+        </Container>
+      </ThemeProvider>
     </>
   );
 };

@@ -7,14 +7,13 @@ export const StyledTotalBox = styled.div({
 
   marginTop: 30,
 
-  width: 282,
   height: 85,
   borderRadius: 20,
   backgroundColor: `var(--hover-button-color)`,
   boxShadow: "5px 10px 20px 0px rgba(170, 178, 197, 0.40)",
 
   "@media(min-width: 768px)": {
-    width: 668,
+    width: "100%",
     height: 50,
   },
 

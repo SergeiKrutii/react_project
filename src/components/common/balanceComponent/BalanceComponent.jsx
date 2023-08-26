@@ -1,6 +1,3 @@
-import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
-import authSelectors from "redux/auth/authSelectors";
 import { useEffect, useState } from "react";
 import {
   StyledBalanceComponent,
@@ -11,19 +8,26 @@ import {
   StyledButtonForm,
   StyledBalanceSpan,
 } from "components/common/balanceComponent/StyledBalanceComponent";
+import {
+  useSetUserBalanceMutation,
+  useGetUserQuery,
+} from "redux/auth/authApiSlice";
+import { useMatchMedia } from "helpers/mediaQuery";
+import { useLocation } from "react-router-dom";
 
-import { useSetUserBalanceMutation } from "redux/auth/authApiSlice";
-import { useTranslation } from "react-i18next";
-
-const BalanceComponent = ({ userBalance = "" }) => {
-  const [balance, setBalance] = useState({ value: 0, currency: "UAH" });
+const BalanceComponent = () => {
+  const [balance, setBalance] = useState("");
   const [setUserBalance] = useSetUserBalanceMutation();
-  const stateBalance = useSelector(authSelectors.selectBalance);
-  const { t } = useTranslation();
+  const { data } = useGetUserQuery();
+  const { isMobile, isTablet } = useMatchMedia();
+  const location = useLocation();
+
+  let deviseSize = isMobile || isTablet;
+  const isChartPath = location.pathname === "/chart";
 
   useEffect(() => {
-    setBalance({ ...balance, value: userBalance });
-  }, [setBalance, userBalance]);
+    setBalance(data?.balance);
+  }, [data?.balance, setBalance]);
 
   const handleSetNewBalance = (e) => {
     e.preventDefault();
@@ -35,26 +39,25 @@ const BalanceComponent = ({ userBalance = "" }) => {
     setBalance({ ...balance, value: numericValue });
   };
 
-  const isEmptyBalance = stateBalance === 0;
+  const isEmptyStyledChart = location.pathname === "/chart";
 
-  const placeholderText = isEmptyBalance ? "00.00" : `${balance.value}`;
+  const isEmptyBalance = balance === 0;
+  const placeholderText = isEmptyBalance ? "00.00 UAH" : `${balance}`;
   return (
-    <StyledBalanceComponent>
-      <StyledParagraph>{t("balanceComponent.balance")}</StyledParagraph>
+    <StyledBalanceComponent isEmptyStyledChart={isEmptyStyledChart}>
+      <StyledParagraph>Баланс:</StyledParagraph>
       <StyledBalanceForm onSubmit={handleSetNewBalance}>
-        <StyledBalanceDiv>
-          <StyledBalanceInput
-            type="text"
-            placeholder={`${placeholderText} `}
-            onChange={handleBalanceChange}
-            disabled={!isEmptyBalance}
-          />
-          <StyledBalanceSpan>UAH</StyledBalanceSpan>
-        </StyledBalanceDiv>
-
-        <StyledButtonForm type="submit" disabled={!isEmptyBalance}>
-          {t("balanceComponent.button")}
-        </StyledButtonForm>
+        <StyledBalanceInput
+          type="number"
+          placeholder={placeholderText}
+          onChange={handleBalanceChange}
+          isEmptyStyledChart={isEmptyStyledChart}
+        />
+        {deviseSize && isChartPath ? null : (
+          <StyledButtonForm type="submit" disabled={isEmptyBalance}>
+            ПОДТВЕРДИТЬ
+          </StyledButtonForm>
+        )}
       </StyledBalanceForm>
     </StyledBalanceComponent>
   );

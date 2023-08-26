@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const StyledBalanceComponent = styled.div(({ prop }) => ({
+const StyledBalanceComponent = styled.div(({ isEmptyStyledChart }) => ({
   alignItems: "center",
-  display: "flex",
+  display: `${isEmptyStyledChart ? "block" : "flex"}`,
   flexWrap: "wrap",
 
   justifyContent: "center",
@@ -11,63 +11,43 @@ const StyledBalanceComponent = styled.div(({ prop }) => ({
   },
   "@media(min-width: 768px)": {
     display: "flex",
-    marginRight: 111,
+    marginRight: `${isEmptyStyledChart ? "0px" : "111px"}`,
   },
   "@media(min-width: 1279px)": {
-    marginRight: 205,
+    marginRight: `${isEmptyStyledChart ? "0px" : "205px"}`,
   },
 }));
 
-const StyledBalanceDiv = styled.div({
+const StyledBalanceInput = styled.input(({ isEmptyStyledChart }) => ({
   display: "flex",
-  alignItems: "center",
-  textAlign: "center",
+  flexDirection: "column",
   justifyContent: "center",
+  flexShrink: 0,
+  width: "100px",
+
+  border: "2px solid var(--hover-button-color)",
+  borderRadius: `${
+    isEmptyStyledChart ? "22px 22px 22px 22px" : "22px 0px 0px 22px"
+  }`,
+
+  padding: "12px 17px 12px 6px",
+  backgroundColor: "transparent",
+  borderRight: `${
+    isEmptyStyledChart ? "2px solid var(--hover-button-color)" : "none"
+  }`,
+
   color: "#000",
-
-  border: "2px solid #FFF",
-  borderRadius: "22px 0px 0px 22px",
-  padding: "13px 17px 13px 6px",
-  // padding: 0,
-
-  borderRight: "none",
-
-  "@media(min-width: 320px)": {
-    // height: 44,
-  },
-  "@media(min-width: 768px)": {
-    borderRadius: "22px",
-    marginRight: "15px",
-    borderRight: "2px solid #FFF",
-  },
-});
-
-const StyledBalanceInput = styled.input((prop) => ({
   textAlign: "right",
   fontSize: "12px",
   fontWeight: 700,
-  backgroundColor: "transparent",
   letterSpacing: "0.24px",
   textTransform: "uppercase",
-  width: "65px",
-  border: "none",
 
-  "&::placeholder": {
-    letterSpacing: "0.24px",
-    textTransform: "uppercase",
-    color: "#000",
-    fontSize: "12px",
-    fontWeight: 700,
+  "@media(min-width: 768px)": {
+    borderRadius: "22px",
+    marginRight: "15px",
+    borderRight: "2px solid var(--hover-button-color)",
   },
-}));
-const StyledBalanceSpan = styled.span((prop) => ({
-  marginLeft: 5,
-  color: "#000",
-  fontSize: "12px",
-  fontWeight: 700,
-  backgroundColor: "transparent",
-  letterSpacing: "0.24px",
-  textTransform: "uppercase",
 }));
 
 const StyledBalanceForm = styled.form(({ prop }) => ({
@@ -93,16 +73,14 @@ const StyledParagraph = styled.p(() => ({
   },
 }));
 
-const StyledButtonForm = styled.button((disabled) => ({
+const StyledButtonForm = styled.button(() => ({
   width: "125px",
-  height: 44,
-  // padding: "12px 6px 12px 17px",
+  padding: "12px 6px 12px 17px",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  cursor: disabled ? "not-allowed" : "pointer",
 
-  border: "2px solid #FFF ",
+  border: "2px solid var(--hover-button-color) ",
 
   borderRadius: "0px 22px 22px 0px;",
   backgroundColor: "var(--main-bg-color)",
@@ -115,10 +93,8 @@ const StyledButtonForm = styled.button((disabled) => ({
   transition: "background-color 0.5s ease-in-out, color 0.5s ease-in-out",
 
   "&:hover, &:focus": {
-    color: disabled ? "var(--secondary-color)" : "var(--hover-button-color)",
-    backgroundColor: disabled
-      ? "var(--main-bg-color)"
-      : "var(--main-bg-button-color)",
+    color: "var(--hover-button-color)",
+    backgroundColor: "var(--main-bg-button-color)",
   },
 
   "@media(min-width: 768px)": {
@@ -130,8 +106,6 @@ export {
   StyledBalanceComponent,
   StyledParagraph,
   StyledBalanceInput,
-  StyledBalanceDiv,
-  StyledBalanceSpan,
   StyledBalanceForm,
   StyledButtonForm,
 };
