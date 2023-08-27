@@ -14,6 +14,7 @@ import {
 } from "redux/auth/authApiSlice";
 import { useMatchMedia } from "helpers/mediaQuery";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const BalanceComponent = () => {
   const [balance, setBalance] = useState("");
@@ -21,6 +22,7 @@ const BalanceComponent = () => {
   const { data } = useGetUserQuery();
   const { isMobile, isTablet } = useMatchMedia();
   const location = useLocation();
+  const { t } = useTranslation();
 
   let deviseSize = isMobile || isTablet;
   const isChartPath = location.pathname === "/chart";
@@ -45,17 +47,21 @@ const BalanceComponent = () => {
   const placeholderText = isEmptyBalance ? "00.00 UAH" : `${balance}`;
   return (
     <StyledBalanceComponent isEmptyStyledChart={isEmptyStyledChart}>
-      <StyledParagraph>Баланс:</StyledParagraph>
+      <StyledParagraph>{t("balanceComponent.balance")}</StyledParagraph>
       <StyledBalanceForm onSubmit={handleSetNewBalance}>
-        <StyledBalanceInput
-          type="number"
-          placeholder={placeholderText}
-          onChange={handleBalanceChange}
-          isEmptyStyledChart={isEmptyStyledChart}
-        />
+        <StyledBalanceDiv isEmptyStyledChart={isEmptyStyledChart}>
+          <StyledBalanceInput
+            type="text"
+            placeholder={`${placeholderText} `}
+            onChange={handleBalanceChange}
+            disabled={!isEmptyBalance}
+          />
+          <StyledBalanceSpan>UAH</StyledBalanceSpan>
+        </StyledBalanceDiv>
+
         {deviseSize && isChartPath ? null : (
           <StyledButtonForm type="submit" disabled={isEmptyBalance}>
-            ПОДТВЕРДИТЬ
+            {t("balanceComponent.button")}
           </StyledButtonForm>
         )}
       </StyledBalanceForm>

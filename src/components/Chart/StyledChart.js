@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledChartWrap = styled.div`
-  background-color: #fff;
+  background-color: var(--hover-button-color);
 
   @media screen and (max-width: 767px) {
     height: 500px;
