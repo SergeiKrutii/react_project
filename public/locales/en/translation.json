@@ -20,6 +20,11 @@
     "income": "Description"
   },
 
+  "totalExpenseIncome": {
+    "expense": "Expense",
+    "income": "Incomes"
+  },
+
   "categoryTitle": {
     "categoryExpense": "Product category",
     "categoryIncomes": "Category"

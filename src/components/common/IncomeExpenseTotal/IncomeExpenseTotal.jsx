@@ -8,14 +8,18 @@ import {
   StyledExpenseBlock,
 } from "./StyledIncomeExpenseTotal";
 
+import { useTranslation } from "react-i18next";
+
 const IncomeExpenseTotal = ({ incomeMonth, expenseMonth }) => {
+  const { t } = useTranslation();
+
   if (expenseMonth === undefined) return;
   if (incomeMonth === undefined) return;
 
   return (
     <StyledTotalBox>
       <StyledExpenseBlock>
-        <StyledText>Расходы:</StyledText>
+        <StyledText>{t("totalExpenseIncome.expense")}:</StyledText>
         <StyledExpenseText>
           {"- " + expenseMonth?.expenseTotal + ".00 грн."}
         </StyledExpenseText>
@@ -24,7 +28,7 @@ const IncomeExpenseTotal = ({ incomeMonth, expenseMonth }) => {
       <StyledDocorationBorder></StyledDocorationBorder>
 
       <StyledIncomeBlock>
-        <StyledText>Доходы:</StyledText>
+        <StyledText>{t("totalExpenseIncome.income")}:</StyledText>
         <StyledIncomeText>
           {"+ " + incomeMonth?.incomeTotal + ".00 грн."}
         </StyledIncomeText>
