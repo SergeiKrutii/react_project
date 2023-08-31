@@ -28,7 +28,7 @@ export const SyledButton = styled.button(({ children }) => ({
   transition: "background-color 0.5s ease-in-out, color 0.5s ease-in-out",
 
   "&:hover, &:focus": {
-    color: "var(--hover-button-color)",
+    color: "var(--secondary-color)",
     backgroundColor: "var(--main-bg-button-hover)",
   },
 }));

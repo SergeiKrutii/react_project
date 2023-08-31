@@ -5,6 +5,8 @@ import { StyledButton } from "components/TransactionAdd/StyledTransactionAdd";
 import { useMatchMedia } from "helpers/mediaQuery";
 import { useNavigate } from "react-router-dom";
 import SliderDate from "components/common/SliderDate/SliderDate";
+
+import { useTranslation } from "react-i18next";
 import BalanceComponent from "components/common/balanceComponent/BalanceComponent";
 // import ChartBalance from "components/common/ChartBalance/ChartBalance";
 import IncomeExpenseTotal from "components/common/IncomeExpenseTotal/IncomeExpenseTotal";
@@ -21,15 +23,18 @@ const ChartPage = () => {
   const { isMobile } = useMatchMedia();
   const navigate = useNavigate();
   const [periodDate, { data: periodData }] = usePeriodDataMutation();
+  const { t } = useTranslation();
+  const lengExpense = t("totalExpenseIncome.expense");
+  const lengIncome = t("totalExpenseIncome.income");
 
-  const [typeOfTransactions, setTypeOfTransactions] = useState("Расходы");
+  const [typeOfTransactions, setTypeOfTransactions] = useState(lengExpense);
   const [typeOfCategory, setTypeOfCategory] = useState("");
 
   const expenseMonth = periodData?.expenses;
   const incomeMonth = periodData?.incomes;
 
   const arrayForMarkup =
-    typeOfTransactions === "Расходы"
+    typeOfTransactions === lengExpense
       ? expenseMonth?.expensesData
       : incomeMonth?.incomesData;
 
@@ -43,7 +48,7 @@ const ChartPage = () => {
 
   const handleChangeCategory = () => {
     setTypeOfTransactions((prevType) =>
-      prevType === "Расходы" ? "Доходы" : "Расходы"
+      prevType === lengExpense ? lengIncome : lengExpense
     );
   };
 
@@ -90,9 +95,7 @@ const ChartPage = () => {
                     style={{ width: "24px", height: "24px" }}
                   />
                   {!isMobile && (
-                    <StyledChartBackText>
-                      Вернуться на главную
-                    </StyledChartBackText>
+                    <StyledChartBackText>{t("backText")}</StyledChartBackText>
                   )}
                 </StyledButton>
               </StyledChartBackBlock>

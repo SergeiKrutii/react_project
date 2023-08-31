@@ -35,5 +35,6 @@
     "category": "CATEGORY",
     "sum": "SUM"
   },
-  "summary": "Summary"
+  "summary": "Summary",
+  "backText": "Go back"
 }

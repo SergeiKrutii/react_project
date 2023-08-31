@@ -19,6 +19,10 @@
     "expense": "Описание товара",
     "income": "Описание"
   },
+  "totalExpenseIncome": {
+    "expense": "Расход",
+    "income": "Доход"
+  },
   "categoryTitle": {
     "categoryExpense": "Категория товаров",
     "categoryIncomes": "Категория"
@@ -29,5 +33,6 @@
     "category": "КАТЕГОРИЯ",
     "sum": "СУММА"
   },
-  "summary": "Сводка"
+  "summary": "Сводка",
+  "backText": "Вернуться на главную"
 }

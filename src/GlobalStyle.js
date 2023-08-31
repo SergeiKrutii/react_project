@@ -6,7 +6,8 @@ body {
 }
   :root {
     --primary-color: #000000;
-    --secondary-color: #52555f;
+    // --secondary-color: #52555f;
+    --secondary-color: ${(props) => (props.isDark ? "#52555f" : "black")}
     --transparent-color: rgba(82, 85, 95, 0.7);
     --category-placeholder-color: ${(props) =>
       props.isDark ? "#c7ccdc " : "#000000"};
