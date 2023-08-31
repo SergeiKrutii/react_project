@@ -19,6 +19,10 @@
     "expense": "Опис товару",
     "income": "Опис"
   },
+  "totalExpenseIncome": {
+    "expense": "Витрати",
+    "income": "Дохід"
+  },
   "categoryTitle": {
     "categoryExpense": "Категорія товарів",
     "categoryIncomes": "Категорія"
@@ -29,5 +33,6 @@
     "category": "КАТЕГОРІЯ",
     "sum": "СУМА"
   },
-  "summary": "Сумарно"
+  "summary": "Сумарно",
+  "backText": "Повернутися на головну"
 }
